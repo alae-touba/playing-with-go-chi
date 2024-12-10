@@ -1,0 +1,42 @@
+2024/12/08 13:41:56 Starting server on :8081
+2024/12/08 13:45:00 Starting server on :8081
+2024/12/08 13:50:24 Starting server on :8081
+2024/12/08 13:50:51 Starting server on :8081
+2024/12/08 14:10:14 Starting server on :8081
+2024/12/08 14:10:31 Starting server on :8081
+2024/12/08 14:11:25 Starting server on :8081
+2024-12-08T15:19:35+01:00 [32mINFO[0m [37;1mInside getUsers[0m [33mservice: [0m[36m"simple-logger"[0m [33mhttpRequest: [0m[37m{[0m[33murl: [0m[36m"http://localhost:3005/users"[0m [33mmethod: [0m[36m"GET"[0m [33mpath: [0m[36m"/users"[0m [33mremoteIP: [0m[36m"[::1]:61020"[0m [33mproto: [0m[36m"HTTP/1.1"[0m [33mrequestID: [0m[36m"EQ-EQ6402952/MskarWU9l8-000001"[0m[37m}[0m 
+2024-12-08T15:19:35+01:00 [32mINFO[0m [37;1mResponse: 200 OK[0m [33mservice: [0m[36m"simple-logger"[0m [33mhttpRequest: [0m[37m{[0m[33murl: [0m[36m"http://localhost:3005/users"[0m [33mmethod: [0m[36m"GET"[0m [33mpath: [0m[36m"/users"[0m [33mremoteIP: [0m[36m"[::1]:61020"[0m [33mproto: [0m[36m"HTTP/1.1"[0m [33mrequestID: [0m[36m"EQ-EQ6402952/MskarWU9l8-000001"[0m[37m}[0m [33mhttpResponse: [0m[37m{[0m[33mstatus: [0m[36m200[0m [33mbytes: [0m[36m58[0m [33melapsed: [0m[36m1.688100[0m[37m}[0m 
+2024-12-08T15:24:30+01:00 [32mINFO[0m [37;1mRequest: GET /users[0m [33mservice: [0m[36m"simple-logger"[0m [33mtags: [0m[37m{[0m[33menv: [0m[36m"dev"[0m[37m}[0m [33mhttpRequest: [0m[37m{[0m[33murl: [0m[36m"http://localhost:3005/users"[0m [33mmethod: [0m[36m"GET"[0m [33mpath: [0m[36m"/users"[0m [33mremoteIP: [0m[36m"[::1]:61289"[0m [33mproto: [0m[36m"HTTP/1.1"[0m [33mrequestID: [0m[36m"EQ-EQ6402952/vLjLxcyTci-000001"[0m[37m}[0m 
+2024-12-08T15:24:30+01:00 [32mINFO[0m [37;1mInside getUsers[0m [33mservice: [0m[36m"simple-logger"[0m [33mtags: [0m[37m{[0m[33menv: [0m[36m"dev"[0m[37m}[0m [33mhttpRequest: [0m[37m{[0m[33murl: [0m[36m"http://localhost:3005/users"[0m [33mmethod: [0m[36m"GET"[0m [33mpath: [0m[36m"/users"[0m [33mremoteIP: [0m[36m"[::1]:61289"[0m [33mproto: [0m[36m"HTTP/1.1"[0m [33mrequestID: [0m[36m"EQ-EQ6402952/vLjLxcyTci-000001"[0m[37m}[0m 
+2024-12-08T15:24:30+01:00 [32mINFO[0m [37;1mResponse: 200 OK[0m [33mservice: [0m[36m"simple-logger"[0m [33mtags: [0m[37m{[0m[33menv: [0m[36m"dev"[0m[37m}[0m [33mhttpRequest: [0m[37m{[0m[33murl: [0m[36m"http://localhost:3005/users"[0m [33mmethod: [0m[36m"GET"[0m [33mpath: [0m[36m"/users"[0m [33mremoteIP: [0m[36m"[::1]:61289"[0m [33mproto: [0m[36m"HTTP/1.1"[0m [33mrequestID: [0m[36m"EQ-EQ6402952/vLjLxcyTci-000001"[0m[37m}[0m [33mhttpResponse: [0m[37m{[0m[33mstatus: [0m[36m200[0m [33mbytes: [0m[36m58[0m [33melapsed: [0m[36m0.000000[0m[37m}[0m 
+2024-12-08T15:28:38+01:00 [32mINFO[0m [37;1mRequest: GET /favicon.ico[0m [33mservice: [0m[36m"simple-logger"[0m [33mtags: [0m[37m{[0m[33menv: [0m[36m"dev"[0m[37m}[0m [33mhttpRequest: [0m[37m{[0m[33murl: [0m[36m"http://localhost:3005/favicon.ico"[0m [33mmethod: [0m[36m"GET"[0m [33mpath: [0m[36m"/favicon.ico"[0m [33mremoteIP: [0m[36m"[::1]:61598"[0m [33mproto: [0m[36m"HTTP/1.1"[0m [33mrequestID: [0m[36m"EQ-EQ6402952/vLjLxcyTci-000002"[0m[37m}[0m 
+2024-12-08T15:28:38+01:00 [32mINFO[0m [37;1mResponse: 404 Client Error[0m [33mservice: [0m[36m"simple-logger"[0m [33mtags: [0m[37m{[0m[33menv: [0m[36m"dev"[0m[37m}[0m [33mhttpRequest: [0m[37m{[0m[33murl: [0m[36m"http://localhost:3005/favicon.ico"[0m [33mmethod: [0m[36m"GET"[0m [33mpath: [0m[36m"/favicon.ico"[0m [33mremoteIP: [0m[36m"[::1]:61598"[0m [33mproto: [0m[36m"HTTP/1.1"[0m [33mrequestID: [0m[36m"EQ-EQ6402952/vLjLxcyTci-000002"[0m[37m}[0m [33mhttpResponse: [0m[37m{[0m[33mstatus: [0m[36m404[0m [33mbytes: [0m[36m19[0m [33melapsed: [0m[36m0.000000[0m [33mbody: [0m[36m"404 page not found\n"[0m[37m}[0m 
+{"levell":"info","message":"logger construction succeeded","foo":"bar"}
+{"levell":"info","message":"logger construction succeeded","foo":"bar"}
+{"levell":"info","message":"Inside getUsers","foo":"bar"}
+{"levell":"info","message":"logger construction succeeded","foo":"bar"}
+{"levell":"info","message":"Inside getUsers","foo":"bar"}
+{"levell":"info","message":"logger construction succeeded","foo":"bar"}
+{"levell":"info","message":"Inside getUsers","foo":"bar"}
+{"levell":"info","message":"Inside getUsers","foo":"bar"}
+{"levell":"info","message":"Inside getUsers","foo":"bar"}
+{"levell":"info","message":"Inside getUsers","foo":"bar"}
+{"levell":"info","message":"Inside getUsers","foo":"bar"}
+{"levell":"info","message":"logger construction succeeded","foo":"bar"}
+{"levell":"info","message":"Inside getUsers","foo":"bar"}
+{"levell":"info","message":"Inside getUsers","foo":"bar"}
+{"levell":"info","message":"logger construction succeeded","foo":"bar"}
+{"levell":"info","message":"logger construction succeeded","foo":"bar"}
+{"levell":"info","message":"Inside getUsers","foo":"bar"}
+{"levell":"info","message":"logger construction succeeded","foo":"bar"}
+{"levell":"info","message":"Inside getUsers","foo":"bar"}
+{"levell":"info","message":"Inside getUsers","foo":"bar"}
+{"levell":"info","message":"Inside getUsers","foo":"bar"}
+{"levell":"info","message":"Inside getUsers","foo":"bar"}
+{"levell":"info","message":"Inside getUsers","foo":"bar"}
+{"levell":"info","message":"Inside getUsers","foo":"bar"}
+{"levell":"info","message":"Inside getUsers","foo":"bar"}
+{"levell":"info","message":"logger construction succeeded","foo":"bar"}
+{"levell":"info","message":"Inside getUsers","foo":"bar"}
+{"levell":"info","message":"Inside getUsers","foo":"bar"}
