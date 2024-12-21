@@ -1,0 +1,43 @@
+@baseUrl = http://localhost:3005
+@username = alae
+@password = alae
+
+### Create User (Public)
+# Expected: 201 Created
+# Response: {"id": "1", "name": "alae"}
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+    "name": "{{username}}",
+    "password": "{{password}}"
+}
+
+### Get All Users (Protected)
+# Expected: 200 OK
+# Response: [{"id": "1", "name": "alae"}]
+GET {{baseUrl}}/users
+Authorization: Basic {{username}} {{password}}
+
+### Invalid credentials
+# Expected: 401 Unauthorized
+# Response: {"error": "Unauthorized. Invalid credentials"}
+GET {{baseUrl}}/users
+Authorization: Basic test test
+
+### No credentials
+# Expected: 401 Unauthorized
+# Response: {"error": "Unauthorized. No credentials provided"}
+GET {{baseUrl}}/users
+
+### Get User by ID (Protected)
+# Expected: 200 OK
+# Response: {"id": "1", "name": "alae"}
+GET {{baseUrl}}/users/1
+Authorization: Basic {{username}} {{password}}
+
+### Get Users by Name (Protected)
+# Expected: 200 OK
+# Response: [{"id": "1", "name": "alae"}]
+GET {{baseUrl}}/users?name=alae
+Authorization: Basic {{username}} {{password}}
