@@ -2,14 +2,46 @@ version: '3.8'
 
 services:
   app:
+    container_name: go-chi-app
     build:
       context: ..
       dockerfile: docker/Dockerfile
     ports:
       - "${PORT-3005}:3005"
+    environment:
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
+      - DB_PORT=${DB_PORT}
     volumes:
       - ..:/app
-    env_file:
-      - ../.env
     tty: true
     stdin_open: true
+    restart: unless-stopped
+    networks:
+      - go-chi-network
+
+  postgres:
+    container_name: go-chi-postgres
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+      LC_ALL: C.UTF-8
+    # ports:
+    #   - "${DB_PORT}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    env_file:
+      - ../.env
+    restart: unless-stopped
+    networks:
+      - go-chi-network
+
+volumes:
+  postgres_data:
+
+networks:
+  go-chi-network:
+    driver: bridge

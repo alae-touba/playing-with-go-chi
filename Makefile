@@ -1,8 +1,15 @@
 # Start the application
-up: 
-	docker-compose -f docker/docker-compose.yml up
-
+up:
+	docker-compose --env-file .env -f docker/docker-compose.yml up
 
 # Start the application in detached mode
 up-d:
-	 docker-compose -f docker/docker-compose.yml up -d
+	docker-compose --env-file .env -f docker/docker-compose.yml up -d
+
+# Stop and remove all containers and volumes
+down:
+	docker-compose --env-file .env -f docker/docker-compose.yml down -v
+
+# Reset the entire environment
+reset: down
+	docker-compose --env-file .env -f docker/docker-compose.yml up --build

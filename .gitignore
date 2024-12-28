@@ -51,4 +51,8 @@ coverage/
 # Jupyter Notebook
 .ipynb_checkpoints
 
+# logs
 server.log
+
+# ent generated
+repositories/ent/

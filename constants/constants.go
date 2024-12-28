@@ -9,6 +9,7 @@ const (
 	ErrUnauthorizedNoCredentials      = "Unauthorized. No credentials provided"
 	ErrFailedToHashPassword           = "Failed to hash password"
 	ErrFailedToCreateUser             = "Failed to create user"
+	ErrFailedToGetUsers               = "Failed to get users"
 )
 
 const (

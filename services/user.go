@@ -1,76 +1,104 @@
 package services
 
 import (
+	"context"
 	"fmt"
+	"strconv"
+
 	"github.com/alae-touba/playing-with-go-chi/models"
+	"github.com/alae-touba/playing-with-go-chi/repositories"
+	"github.com/alae-touba/playing-with-go-chi/repositories/ent"
 	"github.com/alae-touba/playing-with-go-chi/security"
+	"go.uber.org/zap"
 )
 
 type UserService struct {
-	users []models.User
+	logger         *zap.Logger
+	userRepository *repositories.UserRepository
 }
 
-func NewUserService() *UserService {
+func NewUserService(logger *zap.Logger, userRepository *repositories.UserRepository) *UserService {
 	return &UserService{
-		users: []models.User{},
+		logger:         logger,
+		userRepository: userRepository,
 	}
 }
 
-func (s *UserService) GetUsers(name string) []models.UserResponse {
-	var filtered []models.UserResponse
-	for _, user := range s.users {
-		if name == "" || user.Name == name {
-			filtered = append(filtered, models.UserResponse{
-				ID:   user.ID,
-				Name: user.Name,
-			})
+func (s *UserService) GetUsers(ctx context.Context, username string) ([]models.UserResponse, error) {
+	var users []*ent.User
+	var err error
+
+	if username == "" {
+		users, err = s.userRepository.GetAll(ctx)
+	} else {
+		user, err := s.userRepository.GetByUsername(ctx, username)
+		if err == nil {
+			users = []*ent.User{user}
 		}
 	}
-	return filtered
+
+	if err != nil {
+		s.logger.Error("Failed to get users", zap.Error(err))
+		return nil, fmt.Errorf("Failed to get users: %v", err)
+	}
+	return convertToUserResponses(users), nil
 }
 
-func (s *UserService) GetUser(id string) *models.UserResponse {
-	for _, user := range s.users {
-		if user.ID == id {
-			return &models.UserResponse{ID: user.ID, Name: user.Name}
-		}
+func (s *UserService) CreateUser(ctx context.Context, name, password string) (*models.UserResponse, error) {
+	hashedPassword, err := security.HashPassword(password)
+	if err != nil {
+		return nil, err
 	}
-	return nil
+
+	userEnt, err := s.userRepository.Create(ctx, name, hashedPassword)
+
+	if err != nil {
+		return nil, fmt.Errorf("Failed to create user: %v", err)
+	}
+
+	return convertToUserResponse(userEnt), nil
+}
+
+func (s *UserService) GetUser(ctx context.Context, id int) (*models.UserResponse, error) {
+	user, err := s.userRepository.GetByID(ctx, id)
+	if err != nil {
+		s.logger.Error("Failed to get user by id", zap.Error(err))
+		return nil, fmt.Errorf("Failed to get user by id: %v", err)
+	}
+
+	return convertToUserResponse(user), nil
 }
 
 func (s *UserService) ValidateCredentials(username, password string) bool {
-	user := s.findUserByUsername(username)
-	if user == nil {
+
+	user, err := s.userRepository.GetByUsername(context.Background(), username)
+
+	if err != nil {
+		s.logger.Error("Failed to get user by username", zap.Error(err))
 		return false
 	}
 
 	return security.VerifyPassword(password, user.Password)
 }
 
-func (s *UserService) CreateUser(name, password string) (*models.UserResponse, error) {
-	hashedPassword, err := security.HashPassword(password)
-	if err != nil {
-		return nil, err
-	}
-
-	newUser := models.User{
-		ID:       fmt.Sprintf("%d", len(s.users)+1),
-		Name:     name,
-		Password: hashedPassword,
-	}
-
-	s.users = append(s.users, newUser)
-	return &models.UserResponse{
-		ID:   newUser.ID,
-		Name: newUser.Name,
-	}, nil
-}
-
-func (s *UserService) findUserByUsername(userame string) *models.User {
-	for _, user := range s.users {
-		if user.Name == userame {
-			return &user
+// TODO: change file
+// Helper function to convert ent.User slice to UserResponse slice
+func convertToUserResponses(users []*ent.User) []models.UserResponse {
+	userResponses := make([]models.UserResponse, len(users))
+	for i, user := range users {
+		userResponses[i] = models.UserResponse{
+			ID:       strconv.Itoa(user.ID),
+			Username: user.Username,
 		}
 	}
-	return nil
+	return userResponses
+}
+
+// TODO: change file
+// helper function to convert ent.User to UserResponse
+func convertToUserResponse(user *ent.User) *models.UserResponse {
+	return &models.UserResponse{
+		ID:       strconv.Itoa(user.ID),
+		Username: user.Username,
+	}
 }

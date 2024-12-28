@@ -1,21 +1,19 @@
 @baseUrl = http://localhost:3005
-@username = alae
-@password = alae
+@username = yassine
+@password = yassine
 
 ### Create User (Public)
 # Expected: 201 Created
-# Response: {"id": "1", "name": "alae"}
+# Response: {"id": "xx", "username": "{{username}}"}
 POST {{baseUrl}}/users
 Content-Type: application/json
-
 {
-    "name": "{{username}}",
+    "username": "{{username}}",
     "password": "{{password}}"
 }
 
 ### Get All Users (Protected)
 # Expected: 200 OK
-# Response: [{"id": "1", "name": "alae"}]
 GET {{baseUrl}}/users
 Authorization: Basic {{username}} {{password}}
 
@@ -31,13 +29,14 @@ Authorization: Basic test test
 GET {{baseUrl}}/users
 
 ### Get User by ID (Protected)
-# Expected: 200 OK
-# Response: {"id": "1", "name": "alae"}
 GET {{baseUrl}}/users/1
 Authorization: Basic {{username}} {{password}}
 
 ### Get Users by Name (Protected)
-# Expected: 200 OK
-# Response: [{"id": "1", "name": "alae"}]
-GET {{baseUrl}}/users?name=alae
+GET {{baseUrl}}/users?username=yassine
 Authorization: Basic {{username}} {{password}}
+
+
+### health check
+# Expected: 200 OK
+GET {{baseUrl}}/health

@@ -107,3 +107,236 @@
 {"levell":"info","message":"Inside getUsers","foo":"bar"}
 {"levell":"info","message":"successful authentication","foo":"bar","username":"alae"}
 {"levell":"info","message":"Inside getUsers","foo":"bar"}
+{"levell":"info","message":"logger construction succeeded","foo":"bar"}
+{"levell":"info","message":"successful authentication","foo":"bar","username":"alae"}
+{"levell":"info","message":"Inside getUsers","foo":"bar"}
+2024-12-21T12:11:08.287Z	info	app/main.go:32	logger construction succeeded
+2024-12-21T12:11:40.915Z	info	middlewares/auth.go:40	successful authentication	{"username": "alae"}
+2024-12-21T12:11:40.916Z	info	handlers/user.go:28	Inside getUsers
+2024-12-21T12:29:31.306Z	info	app/main.go:32	logger construction succeeded
+2024-12-21T12:29:49.250Z	info	middlewares/auth.go:40	successful authentication	{"username": "alae"}
+2024-12-21T12:29:49.250Z	info	handlers/user.go:28	Inside getUsers
+2024-12-21T12:30:29.498Z	info	middlewares/auth.go:40	successful authentication	{"username": "alae"}
+2024-12-21T12:30:29.498Z	info	handlers/user.go:28	Inside getUsers
+2024-12-21T12:30:30.381Z	info	middlewares/auth.go:40	successful authentication	{"username": "alae"}
+2024-12-21T12:30:30.381Z	info	handlers/user.go:28	Inside getUsers
+2024-12-21T15:26:06.839Z	info	app/main.go:53	logger construction succeeded
+2024-12-21T15:28:14.936Z	info	app/main.go:53	logger construction succeeded
+2024-12-21T15:28:30.248Z	info	middlewares/auth.go:40	successful authentication	{"username": "alae"}
+2024-12-21T15:28:30.249Z	info	handlers/user.go:28	Inside getUsers
+2024-12-21T16:36:31.064Z	info	app/main.go:38	logger construction succeeded
+2024-12-21T16:36:31.086Z	fatal	app/main.go:73	failed to initialize database	{"error": "failed creating schema resources: querying server version dial tcp 127.0.0.1:5433: connect: connection refused"}
+main.main
+	/app/main.go:73
+runtime.main
+	/usr/local/go/src/runtime/proc.go:271
+2024-12-21T16:42:05.322Z	info	app/main.go:38	logger construction succeeded
+2024-12-21T16:42:11.386Z	fatal	app/main.go:73	failed to initialize database	{"error": "failed creating schema resources: querying server version dial tcp: lookup postgress on 127.0.0.11:53: no such host"}
+main.main
+	/app/main.go:73
+runtime.main
+	/usr/local/go/src/runtime/proc.go:271
+2024-12-21T16:42:23.188Z	info	app/main.go:38	logger construction succeeded
+2024-12-21T16:42:23.209Z	fatal	app/main.go:73	failed to initialize database	{"error": "failed creating schema resources: querying server version dial tcp 172.23.0.2:5433: connect: connection refused"}
+main.main
+	/app/main.go:73
+runtime.main
+	/usr/local/go/src/runtime/proc.go:271
+2024-12-21T16:45:30.094Z	info	app/main.go:38	logger construction succeeded
+2024-12-21T16:49:43.898Z	info	app/main.go:38	logger construction succeeded
+2024-12-21T16:49:43.965Z	info	app/main.go:77	Database initialized
+2024-12-21T16:52:10.555Z	info	app/main.go:38	logger construction succeeded
+2024-12-21T16:52:10.769Z	info	app/main.go:77	Database initialized
+2024-12-21T16:53:49.396Z	info	app/main.go:38	logger construction succeeded
+2024-12-21T16:53:49.607Z	info	app/main.go:87	Database initialized
+2024-12-21T16:55:19.369Z	info	app/main.go:39	logger construction succeeded
+2024-12-21T16:55:19.488Z	info	app/main.go:100	Database initialized
+2024-12-21T17:09:19.418Z	info	app/main.go:39	logger construction succeeded
+2024-12-21T17:09:19.448Z	fatal	app/main.go:97	failed to initialize database	{"error": "failed creating schema resources: querying server version pq: password authentication failed for user \"postgres\""}
+main.main
+	/app/main.go:97
+runtime.main
+	/usr/local/go/src/runtime/proc.go:271
+2024-12-21T17:12:21.323Z	info	app/main.go:39	logger construction succeeded
+2024-12-21T17:12:21.346Z	fatal	app/main.go:97	failed to initialize database	{"error": "failed creating schema resources: querying server version pq: password authentication failed for user \"postgres\""}
+main.main
+	/app/main.go:97
+runtime.main
+	/usr/local/go/src/runtime/proc.go:271
+2024-12-21T17:17:33.797Z	info	app/main.go:39	logger construction succeeded
+2024-12-21T17:17:33.823Z	fatal	app/main.go:97	failed to initialize database	{"error": "failed creating schema resources: querying server version pq: password authentication failed for user \"myuser\""}
+main.main
+	/app/main.go:97
+runtime.main
+	/usr/local/go/src/runtime/proc.go:271
+2024-12-21T17:17:39.151Z	info	app/main.go:39	logger construction succeeded
+2024-12-21T17:18:50.394Z	info	app/main.go:39	logger construction succeeded
+2024-12-21T17:18:50.415Z	fatal	app/main.go:97	failed to initialize database	{"error": "failed creating schema resources: querying server version pq: password authentication failed for user \"postgres\""}
+main.main
+	/app/main.go:97
+runtime.main
+	/usr/local/go/src/runtime/proc.go:271
+2024-12-21T17:26:11.685Z	info	app/main.go:39	logger construction succeeded
+2024-12-21T17:26:11.713Z	fatal	app/main.go:97	failed to initialize database	{"error": "failed creating schema resources: querying server version pq: password authentication failed for user \"postgres\""}
+main.main
+	/app/main.go:97
+runtime.main
+	/usr/local/go/src/runtime/proc.go:271
+2024-12-21T17:30:18.626Z	info	app/main.go:39	logger construction succeeded
+2024-12-21T17:30:18.862Z	info	app/main.go:100	Database initialized
+2024-12-21T17:32:09.523Z	info	app/main.go:39	logger construction succeeded
+2024-12-21T17:32:09.748Z	info	app/main.go:100	Database initialized
+2024-12-21T17:43:55.467Z	info	app/main.go:39	logger construction succeeded
+2024-12-21T17:43:55.663Z	info	app/main.go:100	Database initialized
+2024-12-21T17:46:25.889Z	info	app/main.go:39	logger construction succeeded
+2024-12-21T17:46:25.989Z	info	app/main.go:100	Database initialized
+2024-12-21T17:48:16.039Z	info	app/main.go:40	logger construction succeeded
+2024-12-21T17:48:16.139Z	info	app/main.go:101	Database initialized
+2024-12-21T17:49:49.956Z	info	app/main.go:40	logger construction succeeded
+2024-12-21T17:49:50.086Z	info	app/main.go:101	Database initialized
+2024-12-23T22:35:03.174Z	info	app/main.go:40	logger construction succeeded
+2024-12-23T22:35:03.248Z	info	app/main.go:101	Database initialized
+2024-12-23T22:36:30.977Z	info	app/main.go:40	logger construction succeeded
+2024-12-23T22:36:31.180Z	info	app/main.go:101	Database initialized
+2024-12-23T22:38:05.413Z	info	app/main.go:40	logger construction succeeded
+2024-12-23T22:38:05.694Z	info	app/main.go:101	Database initialized
+2024-12-23T22:38:33.667Z	info	app/main.go:40	logger construction succeeded
+2024-12-23T22:38:33.756Z	info	app/main.go:101	Database initialized
+2024-12-23T22:39:20.134Z	info	app/main.go:40	logger construction succeeded
+2024-12-23T22:39:20.429Z	info	app/main.go:101	Database initialized
+2024-12-23T22:39:39.137Z	info	app/main.go:40	logger construction succeeded
+2024-12-23T22:39:39.359Z	info	app/main.go:101	Database initialized
+2024-12-23T22:40:04.969Z	info	app/main.go:40	logger construction succeeded
+2024-12-23T22:40:05.077Z	info	app/main.go:101	Database initialized
+2024-12-23T22:41:53.361Z	info	app/main.go:41	logger construction succeeded
+2024-12-23T22:41:53.438Z	info	app/main.go:102	Database initialized
+2024-12-23T22:42:25.865Z	info	app/main.go:41	logger construction succeeded
+2024-12-23T22:42:25.957Z	info	app/main.go:102	Database initialized
+2024-12-23T22:42:25.957Z	debug	app/main.go:110	admin user created
+2024-12-23T22:43:28.961Z	info	app/main.go:41	logger construction succeeded
+2024-12-23T22:43:29.045Z	info	app/main.go:102	Database initialized
+2024-12-23T22:43:29.046Z	debug	app/main.go:110	admin user created
+2024-12-23T22:43:39.666Z	debug	app/main.go:123	database query succeeded	{"users_count": 0}
+2024-12-23T22:43:46.477Z	debug	app/main.go:123	database query succeeded	{"users_count": 0}
+2024-12-23T22:46:28.431Z	info	app/main.go:41	logger construction succeeded
+2024-12-23T22:46:28.605Z	info	app/main.go:102	Database initialized
+2024-12-23T22:46:36.057Z	debug	app/main.go:116	admin user created
+2024-12-23T22:46:36.059Z	debug	app/main.go:124	database query succeeded	{"users_count": 0}
+2024-12-23T22:46:37.591Z	debug	app/main.go:116	admin user created
+2024-12-23T22:46:37.597Z	debug	app/main.go:124	database query succeeded	{"users_count": 0}
+2024-12-23T22:49:40.046Z	info	app/main.go:41	logger construction succeeded
+2024-12-23T22:49:40.158Z	info	app/main.go:102	Database initialized
+2024-12-23T22:49:45.157Z	error	app/main.go:118	failed to create admin user	{"error": "ent: validator failed for field \"User.password\": value is less than the required length"}
+main.main.func1
+	/app/main.go:118
+net/http.HandlerFunc.ServeHTTP
+	/usr/local/go/src/net/http/server.go:2171
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/go/pkg/mod/github.com/go-chi/chi/v5@v5.1.0/mux.go:459
+net/http.HandlerFunc.ServeHTTP
+	/usr/local/go/src/net/http/server.go:2171
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/go/pkg/mod/github.com/go-chi/chi/v5@v5.1.0/mux.go:90
+net/http.serverHandler.ServeHTTP
+	/usr/local/go/src/net/http/server.go:3142
+net/http.(*conn).serve
+	/usr/local/go/src/net/http/server.go:2044
+2024-12-23T22:50:37.023Z	info	app/main.go:41	logger construction succeeded
+2024-12-23T22:50:37.225Z	info	app/main.go:102	Database initialized
+2024-12-23T22:51:04.814Z	debug	app/main.go:122	admin user created	{"id": 1}
+2024-12-23T22:51:04.815Z	debug	app/main.go:129	database query succeeded	{"users_count": 1}
+2024-12-23T22:51:13.946Z	error	app/main.go:118	failed to create admin user	{"error": "ent: constraint failed: pq: duplicate key value violates unique constraint \"users_username_key\""}
+main.main.func1
+	/app/main.go:118
+net/http.HandlerFunc.ServeHTTP
+	/usr/local/go/src/net/http/server.go:2171
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/go/pkg/mod/github.com/go-chi/chi/v5@v5.1.0/mux.go:459
+net/http.HandlerFunc.ServeHTTP
+	/usr/local/go/src/net/http/server.go:2171
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/go/pkg/mod/github.com/go-chi/chi/v5@v5.1.0/mux.go:90
+net/http.serverHandler.ServeHTTP
+	/usr/local/go/src/net/http/server.go:3142
+net/http.(*conn).serve
+	/usr/local/go/src/net/http/server.go:2044
+2024-12-26T19:45:52.121Z	info	app/main.go:41	logger construction succeeded
+2024-12-26T19:45:52.282Z	info	app/main.go:102	Database initialized
+2024-12-26T19:46:05.349Z	debug	app/main.go:131	database query succeeded	{"users_count": 1}
+2024-12-26T19:46:49.902Z	info	handlers/user.go:28	Inside getUsers
+2024-12-26T19:48:56.485Z	info	handlers/user.go:28	Inside getUsers
+2024-12-26T20:12:37.185Z	info	app/main.go:41	logger construction succeeded
+2024-12-26T20:12:37.399Z	info	app/main.go:102	Database initialized
+2024-12-26T20:21:25.475Z	info	middlewares/auth.go:40	successful authentication	{"username": "yassine"}
+2024-12-26T20:21:25.475Z	info	handlers/user.go:28	Inside getUsers
+2024-12-26T20:21:35.402Z	info	middlewares/auth.go:40	successful authentication	{"username": "yassine"}
+2024-12-26T20:21:35.402Z	info	handlers/user.go:28	Inside getUsers
+2024-12-26T20:37:26.218Z	info	app/main.go:41	logger construction succeeded
+2024-12-26T20:37:26.295Z	info	app/main.go:103	Database initialized
+2024-12-26T20:43:55.960Z	info	app/main.go:41	logger construction succeeded
+2024-12-26T20:43:56.042Z	info	app/main.go:103	Database initialized
+2024-12-26T20:47:58.931Z	info	middlewares/auth.go:40	successful authentication	{"username": "yassine"}
+2024-12-26T20:47:58.931Z	info	handlers/user.go:29	Inside getUsers
+2024-12-26T20:48:03.269Z	error	services/user.go:78	Failed to get user by username	{"error": "ent: user not found"}
+github.com/alae-touba/playing-with-go-chi/services.(*UserService).ValidateCredentials
+	/app/services/user.go:78
+github.com/alae-touba/playing-with-go-chi/middlewares.(*AuthMiddleware).BasicAuth-fm.(*AuthMiddleware).BasicAuth.func1
+	/app/middlewares/auth.go:34
+net/http.HandlerFunc.ServeHTTP
+	/usr/local/go/src/net/http/server.go:2171
+github.com/go-chi/chi/v5.(*ChainHandler).ServeHTTP
+	/go/pkg/mod/github.com/go-chi/chi/v5@v5.1.0/chain.go:31
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/go/pkg/mod/github.com/go-chi/chi/v5@v5.1.0/mux.go:459
+net/http.HandlerFunc.ServeHTTP
+	/usr/local/go/src/net/http/server.go:2171
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/go/pkg/mod/github.com/go-chi/chi/v5@v5.1.0/mux.go:90
+net/http.serverHandler.ServeHTTP
+	/usr/local/go/src/net/http/server.go:3142
+net/http.(*conn).serve
+	/usr/local/go/src/net/http/server.go:2044
+2024-12-26T20:48:11.504Z	info	middlewares/auth.go:40	successful authentication	{"username": "yassine"}
+2024-12-26T20:50:22.146Z	info	app/main.go:41	logger construction succeeded
+2024-12-26T20:50:22.374Z	info	app/main.go:103	Database initialized
+2024-12-26T20:50:31.096Z	info	middlewares/auth.go:40	successful authentication	{"username": "yassine"}
+2024-12-26T20:52:03.714Z	info	middlewares/auth.go:40	successful authentication	{"username": "yassine"}
+2024-12-26T20:53:41.150Z	info	app/main.go:41	logger construction succeeded
+2024-12-26T20:53:41.361Z	info	app/main.go:103	Database initialized
+2024-12-26T20:53:48.224Z	info	middlewares/auth.go:40	successful authentication	{"username": "yassine"}
+2024-12-26T20:53:53.624Z	info	middlewares/auth.go:40	successful authentication	{"username": "yassine"}
+2024-12-26T20:53:53.625Z	error	services/user.go:66	Failed to get user by id	{"error": "ent: user not found"}
+github.com/alae-touba/playing-with-go-chi/services.(*UserService).GetUser
+	/app/services/user.go:66
+github.com/alae-touba/playing-with-go-chi/handlers.(*UserHandler).GetUser
+	/app/handlers/user.go:48
+net/http.HandlerFunc.ServeHTTP
+	/usr/local/go/src/net/http/server.go:2171
+github.com/alae-touba/playing-with-go-chi/middlewares.(*AuthMiddleware).BasicAuth-fm.(*AuthMiddleware).BasicAuth.func1
+	/app/middlewares/auth.go:41
+net/http.HandlerFunc.ServeHTTP
+	/usr/local/go/src/net/http/server.go:2171
+github.com/go-chi/chi/v5.(*ChainHandler).ServeHTTP
+	/go/pkg/mod/github.com/go-chi/chi/v5@v5.1.0/chain.go:31
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/go/pkg/mod/github.com/go-chi/chi/v5@v5.1.0/mux.go:459
+net/http.HandlerFunc.ServeHTTP
+	/usr/local/go/src/net/http/server.go:2171
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/go/pkg/mod/github.com/go-chi/chi/v5@v5.1.0/mux.go:90
+net/http.serverHandler.ServeHTTP
+	/usr/local/go/src/net/http/server.go:3142
+net/http.(*conn).serve
+	/usr/local/go/src/net/http/server.go:2044
+2024-12-26T20:53:59.488Z	info	middlewares/auth.go:40	successful authentication	{"username": "yassine"}
+2024-12-26T20:54:03.809Z	info	middlewares/auth.go:40	successful authentication	{"username": "yassine"}
+2024-12-26T20:54:29.700Z	info	middlewares/auth.go:40	successful authentication	{"username": "yassine"}
+2024-12-26T20:54:29.700Z	info	handlers/user.go:30	Inside getUsers
+2024-12-26T20:54:36.597Z	info	middlewares/auth.go:40	successful authentication	{"username": "yassine"}
+2024-12-26T20:54:36.598Z	info	handlers/user.go:30	Inside getUsers
+2024-12-26T21:01:04.939Z	info	app/main.go:41	logger construction succeeded
+2024-12-26T21:01:05.127Z	info	app/main.go:103	Database initialized
+2024-12-26T21:01:16.493Z	info	app/main.go:41	logger construction succeeded
+2024-12-26T21:01:16.743Z	info	app/main.go:103	Database initialized
+2024-12-26T21:02:31.667Z	info	app/main.go:41	logger construction succeeded
+2024-12-26T21:02:31.969Z	info	app/main.go:103	Database initialized

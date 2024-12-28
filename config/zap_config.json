@@ -1,0 +1,18 @@
+{
+  "level": "debug",
+  "encoding": "console",
+  "outputPaths": ["stdout", "./server.log"],
+  "errorOutputPaths": ["stderr"],
+  "encoderConfig": {
+    "messageKey": "message",
+    "levelKey": "level",
+    "timeKey": "timestamp",
+    "nameKey": "logger",
+    "callerKey": "caller",
+    "stacktraceKey": "stacktrace",
+    "levelEncoder": "lowercase",
+    "timeEncoder": "iso8601",
+    "durationEncoder": "string",
+    "callerEncoder": "short"
+  }
+}
