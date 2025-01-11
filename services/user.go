@@ -69,6 +69,18 @@ func (s *UserService) GetUser(ctx context.Context, id int) (*models.UserResponse
 	return convertToUserResponse(user), nil
 }
 
+func (s *UserService) DeleteUser(ctx context.Context, id int) error {
+	err := s.userRepository.Delete(ctx, id)
+	if err != nil {
+		if ent.IsNotFound(err) {
+			return &ent.NotFoundError{}
+		}
+		s.logger.Error("Failed to delete user", zap.Error(err))
+		return fmt.Errorf("Failed to delete user: %v", err)
+	}
+	return nil
+}
+
 func (s *UserService) ValidateCredentials(username, password string) bool {
 
 	user, err := s.userRepository.GetByUsername(context.Background(), username)

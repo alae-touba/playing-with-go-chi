@@ -13,3 +13,7 @@ down:
 # Reset the entire environment
 reset: down
 	docker-compose --env-file .env -f docker/docker-compose.yml up --build
+
+# generate ent files
+ent:
+	go generate ./repositories

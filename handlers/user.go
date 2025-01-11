@@ -7,6 +7,7 @@ import (
 
 	"github.com/alae-touba/playing-with-go-chi/constants"
 	"github.com/alae-touba/playing-with-go-chi/models"
+	"github.com/alae-touba/playing-with-go-chi/repositories/ent"
 	"github.com/alae-touba/playing-with-go-chi/services"
 	"github.com/alae-touba/playing-with-go-chi/utils"
 	"github.com/go-chi/chi/v5"
@@ -68,4 +69,28 @@ func (h *UserHandler) CreateUser(w http.ResponseWriter, r *http.Request) {
 	}
 
 	utils.RespondWithJSON(w, http.StatusCreated, user)
+}
+
+func (h *UserHandler) DeleteUser(w http.ResponseWriter, r *http.Request) {
+	idStr := chi.URLParam(r, "id")
+	id, err := strconv.Atoi(idStr)
+	if err != nil {
+		utils.RespondWithError(w, http.StatusBadRequest, constants.ErrInvalidUserID)
+		return
+	}
+
+	err = h.userService.DeleteUser(r.Context(), id)
+	if err != nil {
+		h.logger.Error("failed to delete user", zap.Error(err))
+
+		if ent.IsNotFound(err) {
+			utils.RespondWithError(w, http.StatusNotFound, constants.ErrUserNotFound)
+			return
+		}
+
+		utils.RespondWithError(w, http.StatusInternalServerError, "failed to delete user")
+		return
+	}
+
+	utils.RespondWithJSON(w, http.StatusNoContent, map[string]interface{}{"message": "User deleted successfully"})
 }

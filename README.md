@@ -5,9 +5,7 @@ This repository is a playground for experimenting with Go.
 
 ## Local Development
 
-You must have go, docker and make installed.\
-All the dev is done inside containers.
-
+You must have go, docker and make installed.
 
 To run the application:
 

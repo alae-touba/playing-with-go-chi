@@ -340,3 +340,286 @@ net/http.(*conn).serve
 2024-12-26T21:01:16.743Z	info	app/main.go:103	Database initialized
 2024-12-26T21:02:31.667Z	info	app/main.go:41	logger construction succeeded
 2024-12-26T21:02:31.969Z	info	app/main.go:103	Database initialized
+2024-12-28T16:21:42.479Z	info	logger/logger.go:29	logger construction succeeded
+2024-12-28T16:21:42.632Z	info	app/main.go:83	Database initialized
+2024-12-28T16:27:26.534Z	info	logger/logger.go:29	logger construction succeeded
+2024-12-28T16:27:26.622Z	info	app/main.go:37	Database initialized
+2024-12-28T16:40:17.258Z	info	logger/logger.go:29	logger construction succeeded
+2024-12-28T16:40:17.349Z	info	app/main.go:37	Database initialized
+2024-12-28T16:49:40.671Z	info	logger/logger.go:29	logger construction succeeded
+2024-12-28T16:49:40.770Z	info	app/main.go:37	Database initialized
+2024-12-28T16:53:36.009Z	info	logger/logger.go:29	logger construction succeeded
+2024-12-28T16:53:36.123Z	info	app/main.go:37	Database initialized
+2024-12-28T16:59:45.439Z	info	logger/logger.go:29	logger construction succeeded
+2024-12-28T16:59:45.633Z	info	app/main.go:37	Database initialized
+2024-12-28T16:59:59.999Z	info	middlewares/auth.go:40	successful authentication	{"username": "yassine"}
+2024-12-28T17:00:00.000Z	info	handlers/user.go:32	Inside getUsers
+2024-12-28T17:00:31.922Z	info	middlewares/auth.go:40	successful authentication	{"username": "yassine"}
+2024-12-28T17:00:39.346Z	info	middlewares/auth.go:40	successful authentication	{"username": "yassine"}
+2024-12-28T17:00:39.347Z	error	handlers/user.go:85	failed to delete user	{"error": "ent:  not found"}
+github.com/alae-touba/playing-with-go-chi/handlers.(*UserHandler).DeleteUser
+	/app/handlers/user.go:85
+net/http.HandlerFunc.ServeHTTP
+	/usr/local/go/src/net/http/server.go:2171
+github.com/alae-touba/playing-with-go-chi/middlewares.(*AuthMiddleware).BasicAuth-fm.(*AuthMiddleware).BasicAuth.func1
+	/app/middlewares/auth.go:41
+net/http.HandlerFunc.ServeHTTP
+	/usr/local/go/src/net/http/server.go:2171
+github.com/go-chi/chi/v5.(*ChainHandler).ServeHTTP
+	/go/pkg/mod/github.com/go-chi/chi/v5@v5.1.0/chain.go:31
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/go/pkg/mod/github.com/go-chi/chi/v5@v5.1.0/mux.go:459
+net/http.HandlerFunc.ServeHTTP
+	/usr/local/go/src/net/http/server.go:2171
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/go/pkg/mod/github.com/go-chi/chi/v5@v5.1.0/mux.go:90
+net/http.serverHandler.ServeHTTP
+	/usr/local/go/src/net/http/server.go:3142
+net/http.(*conn).serve
+	/usr/local/go/src/net/http/server.go:2044
+2024-12-28T17:02:28.479Z	info	logger/logger.go:29	logger construction succeeded
+2024-12-28T17:02:28.836Z	info	app/main.go:37	Database initialized
+2024-12-28T17:02:31.101Z	info	middlewares/auth.go:40	successful authentication	{"username": "yassine"}
+2024-12-28T17:02:31.103Z	error	handlers/user.go:85	failed to delete user	{"error": "ent:  not found"}
+github.com/alae-touba/playing-with-go-chi/handlers.(*UserHandler).DeleteUser
+	/app/handlers/user.go:85
+net/http.HandlerFunc.ServeHTTP
+	/usr/local/go/src/net/http/server.go:2171
+github.com/alae-touba/playing-with-go-chi/middlewares.(*AuthMiddleware).BasicAuth-fm.(*AuthMiddleware).BasicAuth.func1
+	/app/middlewares/auth.go:41
+net/http.HandlerFunc.ServeHTTP
+	/usr/local/go/src/net/http/server.go:2171
+github.com/go-chi/chi/v5.(*ChainHandler).ServeHTTP
+	/go/pkg/mod/github.com/go-chi/chi/v5@v5.1.0/chain.go:31
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/go/pkg/mod/github.com/go-chi/chi/v5@v5.1.0/mux.go:459
+net/http.HandlerFunc.ServeHTTP
+	/usr/local/go/src/net/http/server.go:2171
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/go/pkg/mod/github.com/go-chi/chi/v5@v5.1.0/mux.go:90
+net/http.serverHandler.ServeHTTP
+	/usr/local/go/src/net/http/server.go:3142
+net/http.(*conn).serve
+	/usr/local/go/src/net/http/server.go:2044
+2024-12-28T17:02:55.244Z	info	logger/logger.go:29	logger construction succeeded
+2024-12-28T17:02:55.469Z	info	app/main.go:37	Database initialized
+2024-12-28T17:09:18.098Z	info	middlewares/auth.go:40	successful authentication	{"username": "yassine"}
+2024-12-28T17:09:18.100Z	error	handlers/user.go:85	failed to delete user	{"error": "ent:  not found"}
+github.com/alae-touba/playing-with-go-chi/handlers.(*UserHandler).DeleteUser
+	/app/handlers/user.go:85
+net/http.HandlerFunc.ServeHTTP
+	/usr/local/go/src/net/http/server.go:2171
+github.com/alae-touba/playing-with-go-chi/middlewares.(*AuthMiddleware).BasicAuth-fm.(*AuthMiddleware).BasicAuth.func1
+	/app/middlewares/auth.go:41
+net/http.HandlerFunc.ServeHTTP
+	/usr/local/go/src/net/http/server.go:2171
+github.com/go-chi/chi/v5.(*ChainHandler).ServeHTTP
+	/go/pkg/mod/github.com/go-chi/chi/v5@v5.1.0/chain.go:31
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/go/pkg/mod/github.com/go-chi/chi/v5@v5.1.0/mux.go:459
+net/http.HandlerFunc.ServeHTTP
+	/usr/local/go/src/net/http/server.go:2171
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/go/pkg/mod/github.com/go-chi/chi/v5@v5.1.0/mux.go:90
+net/http.serverHandler.ServeHTTP
+	/usr/local/go/src/net/http/server.go:3142
+net/http.(*conn).serve
+	/usr/local/go/src/net/http/server.go:2044
+2024-12-28T17:16:27.294Z	info	logger/logger.go:29	logger construction succeeded
+2024-12-28T17:16:27.408Z	info	app/main.go:37	Database initialized
+2024-12-28T17:16:34.007Z	info	middlewares/auth.go:40	successful authentication	{"username": "yassine"}
+2024-12-28T17:16:34.009Z	error	handlers/user.go:85	failed to delete user	{"error": "ent:  not found"}
+github.com/alae-touba/playing-with-go-chi/handlers.(*UserHandler).DeleteUser
+	/app/handlers/user.go:85
+net/http.HandlerFunc.ServeHTTP
+	/usr/local/go/src/net/http/server.go:2171
+github.com/alae-touba/playing-with-go-chi/middlewares.(*AuthMiddleware).BasicAuth-fm.(*AuthMiddleware).BasicAuth.func1
+	/app/middlewares/auth.go:41
+net/http.HandlerFunc.ServeHTTP
+	/usr/local/go/src/net/http/server.go:2171
+github.com/go-chi/chi/v5.(*ChainHandler).ServeHTTP
+	/go/pkg/mod/github.com/go-chi/chi/v5@v5.1.0/chain.go:31
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/go/pkg/mod/github.com/go-chi/chi/v5@v5.1.0/mux.go:459
+net/http.HandlerFunc.ServeHTTP
+	/usr/local/go/src/net/http/server.go:2171
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/go/pkg/mod/github.com/go-chi/chi/v5@v5.1.0/mux.go:90
+net/http.serverHandler.ServeHTTP
+	/usr/local/go/src/net/http/server.go:3142
+net/http.(*conn).serve
+	/usr/local/go/src/net/http/server.go:2044
+2024-12-28T17:19:21.161Z	info	logger/logger.go:29	logger construction succeeded
+2024-12-28T17:19:21.397Z	info	app/main.go:37	Database initialized
+2024-12-28T17:29:25.501Z	info	logger/logger.go:29	logger construction succeeded
+2024-12-28T17:29:25.592Z	info	app/main.go:37	Database initialized
+2024-12-28T17:29:45.693Z	info	middlewares/auth.go:40	successful authentication	{"username": "yassine"}
+2024-12-28T17:29:45.696Z	error	handlers/user.go:85	failed to delete user	{"error": "ent:  not found"}
+github.com/alae-touba/playing-with-go-chi/handlers.(*UserHandler).DeleteUser
+	/app/handlers/user.go:85
+net/http.HandlerFunc.ServeHTTP
+	/usr/local/go/src/net/http/server.go:2171
+github.com/alae-touba/playing-with-go-chi/middlewares.(*AuthMiddleware).BasicAuth-fm.(*AuthMiddleware).BasicAuth.func1
+	/app/middlewares/auth.go:41
+net/http.HandlerFunc.ServeHTTP
+	/usr/local/go/src/net/http/server.go:2171
+github.com/go-chi/chi/v5.(*ChainHandler).ServeHTTP
+	/go/pkg/mod/github.com/go-chi/chi/v5@v5.1.0/chain.go:31
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/go/pkg/mod/github.com/go-chi/chi/v5@v5.1.0/mux.go:459
+net/http.HandlerFunc.ServeHTTP
+	/usr/local/go/src/net/http/server.go:2171
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/go/pkg/mod/github.com/go-chi/chi/v5@v5.1.0/mux.go:90
+net/http.serverHandler.ServeHTTP
+	/usr/local/go/src/net/http/server.go:3142
+net/http.(*conn).serve
+	/usr/local/go/src/net/http/server.go:2044
+2024-12-28T17:49:48.824Z	info	logger/logger.go:29	logger construction succeeded
+2024-12-28T17:49:48.976Z	info	app/main.go:37	Database initialized
+2024-12-28T18:26:10.276Z	info	logger/logger.go:29	logger construction succeeded
+2024-12-28T18:26:10.435Z	info	app/main.go:37	Database initialized
+2024-12-28T18:26:59.278Z	info	logger/logger.go:29	logger construction succeeded
+2024-12-28T18:26:59.377Z	info	app/main.go:37	Database initialized
+2024-12-28T19:07:28.688Z	info	logger/logger.go:29	logger construction succeeded
+2024-12-28T19:07:28.688Z	fatal	app/main.go:60	Failed to run migrations	{"error": "source driver: unknown driver file (forgotten import?)"}
+main.main
+	/app/main.go:60
+runtime.main
+	/usr/local/go/src/runtime/proc.go:271
+2024-12-28T19:12:35.250Z	info	logger/logger.go:29	logger construction succeeded
+2024-12-28T19:12:35.259Z	fatal	app/main.go:61	Failed to run migrations	{"error": "failed to open database, \"postgres://postrgres:postrgres@localhost:5432/postrgres?sslmode=disable\": database driver: unknown driver postgres (forgotten import?)"}
+main.main
+	/app/main.go:61
+runtime.main
+	/usr/local/go/src/runtime/proc.go:271
+2024-12-28T19:14:50.733Z	info	logger/logger.go:29	logger construction succeeded
+2024-12-28T19:14:50.765Z	fatal	app/main.go:62	Failed to run migrations	{"error": "failed to open database, \"postgres://postrgres:postrgres@localhost:5432/postrgres?sslmode=disable\": dial tcp 127.0.0.1:5432: connect: connection refused"}
+main.main
+	/app/main.go:62
+runtime.main
+	/usr/local/go/src/runtime/proc.go:271
+2024-12-28T19:17:09.295Z	info	logger/logger.go:29	logger construction succeeded
+2024-12-28T19:17:09.324Z	fatal	app/main.go:62	Failed to run migrations	{"error": "failed to open database, \"postgres://postrgres:postrgres@localhost:5432/postrgres?sslmode=disable\": dial tcp 127.0.0.1:5432: connect: connection refused"}
+main.main
+	/app/main.go:62
+runtime.main
+	/usr/local/go/src/runtime/proc.go:271
+2024-12-28T19:17:49.307Z	info	logger/logger.go:29	logger construction succeeded
+2024-12-28T19:17:49.419Z	fatal	app/main.go:62	Failed to run migrations	{"error": "migration failed: syntax error at or near \"AUTO_INCREMENT\" (column 20) in line 2: CREATE TABLE IF NOT EXISTS users (\r\n  id INT NOT NULL AUTO_INCREMENT,\r\n  username VARCHAR(255) NOT NULL,\r\n  password VARCHAR(255) NOT NULL,\r\n  PRIMARY KEY (id),\r\n  UNIQUE KEY (username)\r\n); (details: pq: syntax error at or near \"AUTO_INCREMENT\")"}
+main.main
+	/app/main.go:62
+runtime.main
+	/usr/local/go/src/runtime/proc.go:271
+2024-12-28T19:18:03.266Z	info	logger/logger.go:29	logger construction succeeded
+2024-12-28T19:18:03.310Z	fatal	app/main.go:62	Failed to run migrations	{"error": "Dirty database version 1. Fix and force version."}
+main.main
+	/app/main.go:62
+runtime.main
+	/usr/local/go/src/runtime/proc.go:271
+2024-12-28T19:21:44.293Z	info	logger/logger.go:29	logger construction succeeded
+2024-12-28T19:21:44.355Z	fatal	app/main.go:62	Failed to run migrations	{"error": "no migration found for version 0: read down for version 0 .: file does not exist"}
+main.main
+	/app/main.go:62
+runtime.main
+	/usr/local/go/src/runtime/proc.go:271
+2024-12-28T19:22:30.764Z	info	logger/logger.go:29	logger construction succeeded
+2024-12-28T19:22:30.985Z	info	app/main.go:72	Database initialized
+2024-12-30T07:58:32.567Z	info	logger/logger.go:29	logger construction succeeded
+2024-12-30T07:58:33.032Z	info	app/main.go:72	Database initialized
+2024-12-30T18:43:38.998Z	info	logger/logger.go:29	logger construction succeeded
+2024-12-30T18:43:39.084Z	fatal	app/main.go:28	Failed to run migrations	{"error": "migration failed: syntax error at or near \"AUTO_INCREMENT\" (column 13) in line 2: CREATE TABLE users (\r\n    id INT AUTO_INCREMENT PRIMARY KEY,\r\n    first_name VARCHAR(255) NOT NULL,\r\n    last_name VARCHAR(255) NOT NULL,\r\n    email VARCHAR(255) UNIQUE NOT NULL,\r\n    password VARCHAR(255) NOT NULL,\r\n    image_name VARCHAR(255),\r\n    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,\r\n    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,\r\n    deleted_at TIMESTAMP NULL DEFAULT NULL\r\n);\r\n\r\nCREATE TABLE questions (\r\n    id INT AUTO_INCREMENT PRIMARY KEY,\r\n    content TEXT NOT NULL,\r\n    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,\r\n    user_id INT,\r\n    topic_id INT,\r\n    deleted_at TIMESTAMP NULL DEFAULT NULL,\r\n    FOREIGN KEY (user_id) REFERENCES users(id),\r\n    FOREIGN KEY (topic_id) REFERENCES topics(id)\r\n);\r\n\r\nCREATE TABLE answers (\r\n    id INT AUTO_INCREMENT PRIMARY KEY,\r\n    content TEXT NOT NULL,\r\n    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,\r\n    user_id INT,\r\n    question_id INT,\r\n    deleted_at TIMESTAMP NULL DEFAULT NULL,\r\n    FOREIGN KEY (user_id) REFERENCES users(id),\r\n    FOREIGN KEY (question_id) REFERENCES questions(id)\r\n);\r\n\r\nCREATE TABLE topics (\r\n    id INT AUTO_INCREMENT PRIMARY KEY,\r\n    name VARCHAR(255) NOT NULL,\r\n    description TEXT,\r\n    image_name VARCHAR(255),\r\n    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,\r\n    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,\r\n    user_id INT,\r\n    deleted_at TIMESTAMP NULL DEFAULT NULL,\r\n    FOREIGN KEY (user_id) REFERENCES users(id)\r\n);\r\n\r\nCREATE TABLE user_follows_user (\r\n    follower_id INT,\r\n    following_id INT,\r\n    PRIMARY KEY (follower_id, following_id),\r\n    FOREIGN KEY (follower_id) REFERENCES users(id),\r\n    FOREIGN KEY (following_id) REFERENCES users(id)\r\n);\r\n\r\nCREATE TABLE tags (\r\n    id INT AUTO_INCREMENT PRIMARY KEY,\r\n    name VARCHAR(255) UNIQUE NOT NULL\r\n);\r\n\r\nCREATE TABLE question_tags (\r\n    question_id INT,\r\n    tag_id INT,\r\n    PRIMARY KEY (question_id, tag_id),\r\n    FOREIGN KEY (question_id) REFERENCES questions(id),\r\n    FOREIGN KEY (tag_id) REFERENCES tags(id)\r\n);\r\n\r\nCREATE TABLE user_votes_question (\r\n    user_id INT,\r\n    question_id INT,\r\n    vote_type ENUM('upvote', 'downvote') NOT NULL,\r\n    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,\r\n    PRIMARY KEY (user_id, question_id),\r\n    FOREIGN KEY (user_id) REFERENCES users(id),\r\n    FOREIGN KEY (question_id) REFERENCES questions(id)\r\n);\r\n\r\nCREATE TABLE user_votes_answer (\r\n    user_id INT,\r\n    answer_id INT,\r\n    vote_type ENUM('upvote', 'downvote') NOT NULL,\r\n    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,\r\n    PRIMARY KEY (user_id, answer_id),\r\n    FOREIGN KEY (user_id) REFERENCES users(id),\r\n    FOREIGN KEY (answer_id) REFERENCES answers(id)\r\n);\r\n\r\nCREATE TABLE roles (\r\n    id INT AUTO_INCREMENT PRIMARY KEY,\r\n    name VARCHAR(255) UNIQUE NOT NULL, -- e.g., 'Admin', 'Moderator', 'User'\r\n    description TEXT -- Optional description of the role\r\n);\r\n\r\nCREATE TABLE user_roles (\r\n    user_id INT,\r\n    role_id INT,\r\n    PRIMARY KEY (user_id, role_id),\r\n    FOREIGN KEY (user_id) REFERENCES users(id),\r\n    FOREIGN KEY (role_id) REFERENCES roles(id)\r\n);\r\n\r\n-- Indexes for Performance\r\nCREATE INDEX idx_questions_user_id ON questions(user_id);\r\nCREATE INDEX idx_questions_topic_id ON questions(topic_id);\r\nCREATE INDEX idx_answers_user_id ON answers(user_id);\r\nCREATE INDEX idx_answers_question_id ON answers(question_id);\r\nCREATE INDEX idx_topics_user_id ON topics(user_id);\r\nCREATE INDEX idx_question_tags_question_id ON question_tags(question_id);\r\nCREATE INDEX idx_question_tags_tag_id ON question_tags(tag_id);\r\nCREATE INDEX idx_user_votes_question_user_id ON user_votes_question(user_id);\r\nCREATE INDEX idx_user_votes_question_question_id ON user_votes_question(question_id);\r\nCREATE INDEX idx_user_votes_answer_user_id ON user_votes_answer(user_id);\r\nCREATE INDEX idx_user_votes_answer_answer_id ON user_votes_answer(answer_id);\r\nCREATE INDEX idx_user_roles_user_id ON user_roles(user_id);\r\nCREATE INDEX idx_user_roles_role_id ON user_roles(role_id); (details: pq: syntax error at or near \"AUTO_INCREMENT\")"}
+main.main
+	/app/main.go:28
+runtime.main
+	/usr/local/go/src/runtime/proc.go:271
+2024-12-30T18:51:03.762Z	info	logger/logger.go:29	logger construction succeeded
+2024-12-30T18:51:03.865Z	fatal	app/main.go:28	Failed to run migrations	{"error": "migration failed: relation \"topics\" does not exist in line 0: CREATE TABLE users (\r\n    id SERIAL PRIMARY KEY,\r\n    first_name VARCHAR(255) NOT NULL,\r\n    last_name VARCHAR(255) NOT NULL,\r\n    email VARCHAR(255) UNIQUE NOT NULL,\r\n    password VARCHAR(255) NOT NULL,\r\n    image_name VARCHAR(255),\r\n    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,\r\n    updated_at TIMESTAMP WITH TIME ZONE, -- Now you will manage this in your API code\r\n    deleted_at TIMESTAMP WITH TIME ZONE NULL,\r\n    CONSTRAINT email_unique UNIQUE (email)\r\n);\r\n\r\nCREATE TABLE questions (\r\n    id SERIAL PRIMARY KEY,\r\n    content TEXT NOT NULL,\r\n    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,\r\n    user_id INT,\r\n    topic_id INT,\r\n    deleted_at TIMESTAMP WITH TIME ZONE NULL,\r\n    FOREIGN KEY (user_id) REFERENCES users(id),\r\n    FOREIGN KEY (topic_id) REFERENCES topics(id)\r\n);\r\n\r\nCREATE TABLE answers (\r\n    id SERIAL PRIMARY KEY,\r\n    content TEXT NOT NULL,\r\n    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,\r\n    user_id INT,\r\n    question_id INT,\r\n    deleted_at TIMESTAMP WITH TIME ZONE NULL,\r\n    FOREIGN KEY (user_id) REFERENCES users(id),\r\n    FOREIGN KEY (question_id) REFERENCES questions(id)\r\n);\r\n\r\nCREATE TABLE topics (\r\n    id SERIAL PRIMARY KEY,\r\n    name VARCHAR(255) NOT NULL,\r\n    description TEXT,\r\n    image_name VARCHAR(255),\r\n    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,\r\n    updated_at TIMESTAMP WITH TIME ZONE, -- You will manage this in your API code\r\n    user_id INT,\r\n    deleted_at TIMESTAMP WITH TIME ZONE NULL,\r\n    FOREIGN KEY (user_id) REFERENCES users(id)\r\n);\r\n\r\nCREATE TABLE user_follows_user (\r\n    follower_id INT,\r\n    following_id INT,\r\n    PRIMARY KEY (follower_id, following_id),\r\n    FOREIGN KEY (follower_id) REFERENCES users(id),\r\n    FOREIGN KEY (following_id) REFERENCES users(id)\r\n);\r\n\r\nCREATE TABLE tags (\r\n    id SERIAL PRIMARY KEY,\r\n    name VARCHAR(255) UNIQUE NOT NULL\r\n);\r\n\r\nCREATE TABLE question_tags (\r\n    question_id INT,\r\n    tag_id INT,\r\n    PRIMARY KEY (question_id, tag_id),\r\n    FOREIGN KEY (question_id) REFERENCES questions(id),\r\n    FOREIGN KEY (tag_id) REFERENCES tags(id)\r\n);\r\n\r\n-- ENUM is not directly supported, so we use a check constraint\r\nCREATE TABLE user_votes_question (\r\n    user_id INT,\r\n    question_id INT,\r\n    vote_type TEXT NOT NULL CHECK (vote_type IN ('upvote', 'downvote')),\r\n    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,\r\n    PRIMARY KEY (user_id, question_id),\r\n    FOREIGN KEY (user_id) REFERENCES users(id),\r\n    FOREIGN KEY (question_id) REFERENCES questions(id)\r\n);\r\n\r\nCREATE TABLE user_votes_answer (\r\n    user_id INT,\r\n    answer_id INT,\r\n    vote_type TEXT NOT NULL CHECK (vote_type IN ('upvote', 'downvote')),\r\n    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,\r\n    PRIMARY KEY (user_id, answer_id),\r\n    FOREIGN KEY (user_id) REFERENCES users(id),\r\n    FOREIGN KEY (answer_id) REFERENCES answers(id)\r\n);\r\n\r\nCREATE TABLE roles (\r\n    id SERIAL PRIMARY KEY,\r\n    name VARCHAR(255) UNIQUE NOT NULL, -- e.g., 'Admin', 'Moderator', 'User'\r\n    description TEXT -- Optional description of the role\r\n);\r\n\r\nCREATE TABLE user_roles (\r\n    user_id INT,\r\n    role_id INT,\r\n    PRIMARY KEY (user_id, role_id),\r\n    FOREIGN KEY (user_id) REFERENCES users(id),\r\n    FOREIGN KEY (role_id) REFERENCES roles(id)\r\n);\r\n\r\n-- Indexes for Performance (These remain the same)\r\nCREATE INDEX idx_questions_user_id ON questions(user_id);\r\nCREATE INDEX idx_questions_topic_id ON questions(topic_id);\r\nCREATE INDEX idx_answers_user_id ON answers(user_id);\r\nCREATE INDEX idx_answers_question_id ON answers(question_id);\r\nCREATE INDEX idx_topics_user_id ON topics(user_id);\r\nCREATE INDEX idx_question_tags_question_id ON question_tags(question_id);\r\nCREATE INDEX idx_question_tags_tag_id ON question_tags(tag_id);\r\nCREATE INDEX idx_user_votes_question_user_id ON user_votes_question(user_id);\r\nCREATE INDEX idx_user_votes_question_question_id ON user_votes_question(question_id);\r\nCREATE INDEX idx_user_votes_answer_user_id ON user_votes_answer(user_id);\r\nCREATE INDEX idx_user_votes_answer_answer_id ON user_votes_answer(answer_id);\r\nCREATE INDEX idx_user_roles_user_id ON user_roles(user_id);\r\nCREATE INDEX idx_user_roles_role_id ON user_roles(role_id); (details: pq: relation \"topics\" does not exist)"}
+main.main
+	/app/main.go:28
+runtime.main
+	/usr/local/go/src/runtime/proc.go:271
+2025-01-07T20:43:36.765Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-07T20:43:37.174Z	fatal	app/main.go:34	failed to initialize database	{"error": "failed creating schema resources: sql/schema: reverse alter table \"users\": unexpected attribute change (expect IDENTITY): []"}
+main.main
+	/app/main.go:34
+runtime.main
+	/usr/local/go/src/runtime/proc.go:271
+2025-01-07T20:45:12.853Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-07T20:45:12.941Z	info	app/main.go:30	Migrations ran successfully
+2025-01-07T20:45:13.145Z	fatal	app/main.go:35	failed to initialize database	{"error": "failed creating schema resources: sql/schema: reverse alter table \"users\": unexpected attribute change (expect IDENTITY): []"}
+main.main
+	/app/main.go:35
+runtime.main
+	/usr/local/go/src/runtime/proc.go:271
+2025-01-11T16:58:22.531Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-11T16:58:22.622Z	info	app/main.go:30	Migrations ran successfully
+2025-01-11T16:58:22.703Z	fatal	app/main.go:35	failed to initialize database	{"error": "failed creating schema resources: sql/schema: reverse alter table \"users\": unexpected attribute change (expect IDENTITY): []"}
+main.main
+	/app/main.go:35
+runtime.main
+	/usr/local/go/src/runtime/proc.go:271
+2025-01-11T17:52:48.456Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-11T17:52:48.557Z	fatal	app/main.go:28	Failed to run migrations	{"error": "migration failed: column \"e♂mail\" named in key does not exist (column 15) in line 11: CREATE TABLE users (\r\n    id SERIAL PRIMARY KEY,\r\n    first_name VARCHAR(255) NOT NULL,\r\n    last_name VARCHAR(255) NOT NULL,\r\n    email VARCHAR(255) UNIQUE NOT NULL,\r\n    password VARCHAR(255) NOT NULL,\r\n    image_name VARCHAR(255),\r\n    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,\r\n    updated_at TIMESTAMP WITH TIME ZONE,\r\n    deleted_at TIMESTAMP WITH TIME ZONE NULL,\r\n    CONSTRAINT email_unique UNIQUE (e♂mail)\r\n);\r\n\r\nCREATE TABLE tags (\r\n    id SERIAL PRIMARY KEY,\r\n    name VARCHAR(255) UNIQUE NOT NULL\r\n);\r\n\r\nCREATE TABLE roles (\r\n    id SERIAL PRIMARY KEY,\r\n    name VARCHAR(255) UNIQUE NOT NULL,\r\n    description TEXT\r\n);\r\n\r\nCREATE TABLE topics (\r\n    id SERIAL PRIMARY KEY,\r\n    name VARCHAR(255) NOT NULL,\r\n    description TEXT,\r\n    image_name VARCHAR(255),\r\n    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,\r\n    updated_at TIMESTAMP WITH TIME ZONE,\r\n    user_id INT,\r\n    deleted_at TIMESTAMP WITH TIME ZONE NULL,\r\n    FOREIGN KEY (user_id) REFERENCES users(id)\r\n);\r\n\r\n   \r\nCREATE TABLE user_roles (\r\n    user_id INT,\r\n    role_id INT,\r\n    PRIMARY KEY (user_id, role_id),\r\n    FOREIGN KEY (user_id) REFERENCES users(id),\r\n    FOREIGN KEY (role_id) REFERENCES roles(id)\r\n);\r\n\r\nCREATE TABLE questions (\r\n    id SERIAL PRIMARY KEY,\r\n    content TEXT NOT NULL,\r\n    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,\r\n    user_id INT,\r\n    topic_id INT,\r\n    deleted_at TIMESTAMP WITH TIME ZONE NULL,\r\n    FOREIGN KEY (user_id) REFERENCES users(id),\r\n    FOREIGN KEY (topic_id) REFERENCES topics(id)\r\n);\r\n\r\nCREATE TABLE answers (\r\n    id SERIAL PRIMARY KEY,\r\n    content TEXT NOT NULL,\r\n    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,\r\n    user_id INT,\r\n    question_id INT,\r\n    deleted_at TIMESTAMP WITH TIME ZONE NULL,\r\n    FOREIGN KEY (user_id) REFERENCES users(id),\r\n    FOREIGN KEY (question_id) REFERENCES questions(id)\r\n);\r\n\r\nCREATE TABLE question_tags (\r\n    question_id INT,\r\n    tag_id INT,\r\n    PRIMARY KEY (question_id, tag_id),\r\n    FOREIGN KEY (question_id) REFERENCES questions(id),\r\n    FOREIGN KEY (tag_id) REFERENCES tags(id)\r\n);\r\n\r\nCREATE TABLE user_votes_question (\r\n    user_id INT,\r\n    question_id INT,\r\n    vote_type TEXT NOT NULL CHECK (vote_type IN ('upvote', 'downvote')),\r\n    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,\r\n    PRIMARY KEY (user_id, question_id),\r\n    FOREIGN KEY (user_id) REFERENCES users(id),\r\n    FOREIGN KEY (question_id) REFERENCES questions(id)\r\n);\r\n\r\nCREATE TABLE user_votes_answer (\r\n    user_id INT,\r\n    answer_id INT,\r\n    vote_type TEXT NOT NULL CHECK (vote_type IN ('upvote', 'downvote')),\r\n    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,\r\n    PRIMARY KEY (user_id, answer_id),\r\n    FOREIGN KEY (user_id) REFERENCES users(id),\r\n    FOREIGN KEY (answer_id) REFERENCES answers(id)\r\n);\r\n\r\nCREATE INDEX idx_questions_user_id ON questions(user_id);\r\nCREATE INDEX idx_questions_topic_id ON questions(topic_id);\r\nCREATE INDEX idx_answers_user_id ON answers(user_id);\r\nCREATE INDEX idx_answers_question_id ON answers(question_id);\r\nCREATE INDEX idx_topics_user_id ON topics(user_id);\r\nCREATE INDEX idx_question_tags_question_id ON question_tags(question_id);\r\nCREATE INDEX idx_question_tags_tag_id ON question_tags(tag_id);\r\nCREATE INDEX idx_user_votes_question_user_id ON user_votes_question(user_id);\r\nCREATE INDEX idx_user_votes_question_question_id ON user_votes_question(question_id);\r\nCREATE INDEX idx_user_votes_answer_user_id ON user_votes_answer(user_id);\r\nCREATE INDEX idx_user_votes_answer_answer_id ON user_votes_answer(answer_id);\r\nCREATE INDEX idx_user_roles_user_id ON user_roles(user_id);\r\nCREATE INDEX idx_user_roles_role_id ON user_roles(role_id); (details: pq: column \"e♂mail\" named in key does not exist)"}
+main.main
+	/app/main.go:28
+runtime.main
+	/usr/local/go/src/runtime/proc.go:271
+2025-01-11T17:54:25.014Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-11T17:54:25.214Z	info	app/main.go:30	Migrations ran successfully
+2025-01-11T17:54:25.299Z	fatal	app/main.go:35	failed to initialize database	{"error": "failed creating schema resources: sql/schema: reverse alter table \"users\": unexpected attribute change (expect IDENTITY): []"}
+main.main
+	/app/main.go:35
+runtime.main
+	/usr/local/go/src/runtime/proc.go:271
+2025-01-11T18:01:30.218Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-11T18:01:30.460Z	info	app/main.go:30	Migrations ran successfully
+2025-01-11T18:01:30.532Z	fatal	app/main.go:35	failed to initialize database	{"error": "failed creating schema resources: sql/schema: reverse alter table \"users\": unexpected attribute change (expect IDENTITY): []"}
+main.main
+	/app/main.go:35
+runtime.main
+	/usr/local/go/src/runtime/proc.go:271
+2025-01-11T18:08:46.701Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-11T18:08:46.769Z	info	app/main.go:30	Migrations ran successfully
+2025-01-11T18:08:46.851Z	fatal	app/main.go:35	failed to initialize database	{"error": "failed creating schema resources: sql/schema: reverse alter table \"users\": unexpected attribute change (expect IDENTITY): []"}
+main.main
+	/app/main.go:35
+runtime.main
+	/usr/local/go/src/runtime/proc.go:271
+2025-01-11T18:10:27.303Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-11T18:10:27.493Z	info	app/main.go:30	Migrations ran successfully
+2025-01-11T18:10:27.567Z	fatal	app/main.go:35	failed to initialize database	{"error": "failed creating schema resources: sql/schema: reverse alter table \"users\": unexpected attribute change (expect IDENTITY): []"}
+main.main
+	/app/main.go:35
+runtime.main
+	/usr/local/go/src/runtime/proc.go:271
+2025-01-11T18:12:22.365Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-11T18:12:22.628Z	info	app/main.go:30	Migrations ran successfully
+2025-01-11T18:12:22.726Z	fatal	app/main.go:35	failed to initialize database	{"error": "failed creating schema resources: sql/schema: reverse alter table \"users\": unexpected attribute change (expect IDENTITY): []"}
+main.main
+	/app/main.go:35
+runtime.main
+	/usr/local/go/src/runtime/proc.go:271
+2025-01-11T18:21:06.492Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-11T18:21:06.760Z	info	app/main.go:30	Migrations ran successfully
+2025-01-11T18:21:06.906Z	info	app/main.go:39	Database initialized
+2025-01-11T18:21:50.028Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-11T18:21:50.094Z	info	app/main.go:30	Migrations ran successfully
+2025-01-11T18:21:50.198Z	info	app/main.go:39	Database initialized
+2025-01-11T18:23:15.444Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-11T18:23:15.479Z	info	app/main.go:30	Migrations ran successfully
+2025-01-11T18:23:15.524Z	info	app/main.go:39	Database initialized
+2025-01-11T18:25:09.832Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-11T18:25:09.873Z	info	app/main.go:30	Migrations ran successfully
+2025-01-11T18:25:09.932Z	info	app/main.go:39	Database initialized
+2025-01-11T18:25:09.932Z	info	app/main.go:81	Server started	{"port": "3005"}
+2025-01-11T18:48:46.902Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-11T18:48:47.126Z	fatal	app/main.go:28	Failed to run migrations	{"error": "migration failed: syntax error at or near \"(\" (column 9) in line 21: CREATE TABLE users (\r\n    id uuid NOT NULL,\r\n    first_name VARCHAR(255) NOT NULL,\r\n    last_name VARCHAR(255) NOT NULL,\r\n    email VARCHAR(255) UNIQUE NOT NULL,\r\n    password VARCHAR(255) NOT NULL,\r\n    image_name VARCHAR(255),\r\n    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,\r\n    updated_at TIMESTAMP WITH TIME ZONE,\r\n    deleted_at TIMESTAMP WITH TIME ZONE NULL,\r\n    CONSTRAINT users_pk PRIMARY KEY (id),\r\n    CONSTRAINT email_unique UNIQUE (email)\r\n);\r\n\r\nCREATE TABLE tags (\r\n    id uuid NOT NULL,\r\n    name VARCHAR(255) UNIQUE NOT NULL\r\n    CONSTRAINT tags_pk PRIMARY KEY (id)\r\n);\r\n\r\nCREATE TABLE roles (\r\n    id uuid NOT NULL ,\r\n    name VARCHAR(255) UNIQUE NOT NULL,\r\n    description TEXT,\r\n    CONSTRAINT roles_pk PRIMARY KEY (id)\r\n);\r\n\r\nCREATE TABLE topics (\r\n    id uuid NOT NULL,\r\n    name VARCHAR(255) NOT NULL,\r\n    description TEXT,\r\n    image_name VARCHAR(255),\r\n    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,\r\n    updated_at TIMESTAMP WITH TIME ZONE,\r\n    user_id uuid,\r\n    deleted_at TIMESTAMP WITH TIME ZONE NULL,\r\n    CONSTRAINT topics_pk PRIMARY KEY (id),\r\n    FOREIGN KEY (user_id) REFERENCES users(id)\r\n);\r\n\r\n   \r\nCREATE TABLE user_roles (\r\n    user_id uuid,\r\n    role_id uuid,\r\n    CONSTRAINT user_roles_pk PRIMARY KEY (user_id, role_id),\r\n    FOREIGN KEY (user_id) REFERENCES users(id),\r\n    FOREIGN KEY (role_id) REFERENCES roles(id)\r\n);\r\n\r\nCREATE TABLE questions (\r\n    id uuid NOT NULL,\r\n    content TEXT NOT NULL,\r\n    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,\r\n    user_id uuid,\r\n    topic_id uuid,\r\n    deleted_at TIMESTAMP WITH TIME ZONE NULL,\r\n    CONSTRAINT questions_pk PRIMARY KEY (id),\r\n    FOREIGN KEY (user_id) REFERENCES users(id),\r\n    FOREIGN KEY (topic_id) REFERENCES topics(id)\r\n);\r\n\r\nCREATE TABLE answers (\r\n    id uuid NOT NULL,\r\n    content TEXT NOT NULL,\r\n    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,\r\n    user_id uuid,\r\n    question_id uuid,\r\n    deleted_at TIMESTAMP WITH TIME ZONE NULL,\r\n    CONSTRAINT answers_pk PRIMARY KEY (id),\r\n    FOREIGN KEY (user_id) REFERENCES users(id),\r\n    FOREIGN KEY (question_id) REFERENCES questions(id)\r\n);\r\n\r\nCREATE TABLE question_tags (\r\n    question_id uuid,\r\n    tag_id uuid,\r\n    CONSTRAINT question_tags_pk PRIMARY KEY (question_id, tag_id),\r\n    FOREIGN KEY (question_id) REFERENCES questions(id),\r\n    FOREIGN KEY (tag_id) REFERENCES tags(id)\r\n);\r\n\r\nCREATE TABLE user_votes_question (\r\n    user_id uuid,\r\n    question_id uuid,\r\n    vote_type TEXT NOT NULL CHECK (vote_type IN ('upvote', 'downvote')),\r\n    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,\r\n    CONSTRAINT user_votes_question_pk PRIMARY KEY (user_id, question_id),\r\n    FOREIGN KEY (user_id) REFERENCES users(id),\r\n    FOREIGN KEY (question_id) REFERENCES questions(id)\r\n);\r\n\r\nCREATE TABLE user_votes_answer (\r\n    user_id uuid,\r\n    answer_id uuid,\r\n    vote_type TEXT NOT NULL CHECK (vote_type IN ('upvote', 'downvote')),\r\n    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,\r\n    CONSTRAINT user_votes_answer_pk PRIMARY KEY (user_id, answer_id),\r\n    FOREIGN KEY (user_id) REFERENCES users(id),\r\n    FOREIGN KEY (answer_id) REFERENCES answers(id)\r\n);\r\n\r\n-- CREATE INDEX idx_questions_user_id ON questions(user_id);\r\n-- CREATE INDEX idx_questions_topic_id ON questions(topic_id);\r\n-- CREATE INDEX idx_answers_user_id ON answers(user_id);\r\n-- CREATE INDEX idx_answers_question_id ON answers(question_id);\r\n-- CREATE INDEX idx_topics_user_id ON topics(user_id);\r\n-- CREATE INDEX idx_question_tags_question_id ON question_tags(question_id);\r\n-- CREATE INDEX idx_question_tags_tag_id ON question_tags(tag_id);\r\n-- CREATE INDEX idx_user_votes_question_user_id ON user_votes_question(user_id);\r\n-- CREATE INDEX idx_user_votes_question_question_id ON user_votes_question(question_id);\r\n-- CREATE INDEX idx_user_votes_answer_user_id ON user_votes_answer(user_id);\r\n-- CREATE INDEX idx_user_votes_answer_answer_id ON user_votes_answer(answer_id);\r\n-- CREATE INDEX idx_user_roles_user_id ON user_roles(user_id);\r\n-- CREATE INDEX idx_user_roles_role_id ON user_roles(role_id); (details: pq: syntax error at or near \"(\")"}
+main.main
+	/app/main.go:28
+runtime.main
+	/usr/local/go/src/runtime/proc.go:271
+2025-01-11T18:50:54.438Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-11T18:50:54.598Z	info	app/main.go:30	Migrations ran successfully
+2025-01-11T18:50:54.783Z	info	app/main.go:39	Database initialized
+2025-01-11T18:50:54.784Z	info	app/main.go:81	Server started	{"port": "3005"}

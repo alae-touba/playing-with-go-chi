@@ -1,0 +1,32 @@
+Soft deletes:
+
+    When a record is first created, deleted_at is set to NULL, indicating that it has not been deleted.
+
+    When you want to fetch records that are not deleted (i.e., the active records):
+        SELECT * FROM users WHERE deleted_at IS NULL;
+
+What happens when a user is deleted?
+    User:
+        SET deleted_at to the current timestamp
+        UPDATE users SET deleted_at = CURRENT_TIMESTAMP WHERE id = [user_id];
+
+    Questions:
+        Keep the questions but remove the association with the deleted user
+        UPDATE questions SET user_id = NULL WHERE user_id = [user_id];
+
+    Answers:
+        Keep the answers but remove the association with the deleted user
+        UPDATE answers SET user_id = NULL WHERE user_id = [user_id];
+
+    Topics:
+        Keep the topics but remove the association with the deleted user
+        UPDATE topics SET user_id = NULL WHERE user_id = [user_id];
+        
+    User Votes:
+        Remove the user's votes
+        DELETE FROM user_votes_question WHERE user_id = [user_id];
+        DELETE FROM user_votes_answer WHERE user_id = [user_id];
+
+    User Roles:
+        Remove the user's roles
+        DELETE FROM user_roles WHERE user_id = [user_id];

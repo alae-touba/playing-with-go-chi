@@ -40,3 +40,7 @@ Authorization: Basic {{username}} {{password}}
 ### health check
 # Expected: 200 OK
 GET {{baseUrl}}/health
+
+### Delete User by ID (Protected)
+DELETE {{baseUrl}}/users/17
+Authorization: Basic {{username}} {{password}}
