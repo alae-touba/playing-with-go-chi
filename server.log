@@ -623,3 +623,99 @@ runtime.main
 2025-01-11T18:50:54.598Z	info	app/main.go:30	Migrations ran successfully
 2025-01-11T18:50:54.783Z	info	app/main.go:39	Database initialized
 2025-01-11T18:50:54.784Z	info	app/main.go:81	Server started	{"port": "3005"}
+2025-01-12T15:20:25.440Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-12T15:20:25.544Z	info	app/main.go:30	Migrations ran successfully
+2025-01-12T15:20:25.661Z	info	app/main.go:39	Database initialized
+2025-01-12T15:20:25.661Z	info	app/main.go:81	Server started	{"port": "3005"}
+2025-01-12T15:20:37.197Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-12T15:20:37.234Z	info	app/main.go:30	Migrations ran successfully
+2025-01-12T15:20:37.317Z	info	app/main.go:39	Database initialized
+2025-01-12T15:20:37.318Z	info	app/main.go:81	Server started	{"port": "3005"}
+2025-01-12T15:21:43.877Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-12T15:21:43.915Z	info	app/main.go:30	Migrations ran successfully
+2025-01-12T15:21:44.023Z	info	app/main.go:39	Database initialized
+2025-01-12T15:21:44.024Z	info	app/main.go:81	Server started	{"port": "3005"}
+2025-01-12T15:25:34.324Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-12T15:25:34.382Z	info	app/main.go:30	Migrations ran successfully
+2025-01-12T15:25:34.466Z	info	app/main.go:39	Database initialized
+2025-01-12T15:25:34.466Z	info	app/main.go:81	Server started	{"port": "3005"}
+2025-01-12T15:28:25.645Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-12T15:28:25.714Z	info	app/main.go:30	Migrations ran successfully
+2025-01-12T15:28:25.916Z	info	app/main.go:39	Database initialized
+2025-01-12T15:28:25.927Z	info	app/main.go:81	Server started	{"port": "3005"}
+2025-01-12T15:32:03.028Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-12T15:32:03.103Z	info	app/main.go:30	Migrations ran successfully
+2025-01-12T15:32:03.210Z	info	app/main.go:39	Database initialized
+2025-01-12T15:32:03.210Z	info	app/main.go:81	Server started	{"port": "3005"}
+2025-01-12T15:32:23.670Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-12T15:32:23.739Z	info	app/main.go:30	Migrations ran successfully
+2025-01-12T15:32:23.880Z	info	app/main.go:39	Database initialized
+2025-01-12T15:32:23.889Z	info	app/main.go:81	Server started	{"port": "3005"}
+2025-01-12T15:33:15.929Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-12T15:33:16.326Z	info	app/main.go:30	Migrations ran successfully
+2025-01-12T15:33:16.843Z	info	app/main.go:39	Database initialized
+2025-01-12T15:33:16.855Z	info	app/main.go:81	Server started	{"port": "3005"}
+2025-01-12T15:33:27.097Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-12T15:33:27.259Z	info	app/main.go:30	Migrations ran successfully
+2025-01-12T15:33:27.570Z	info	app/main.go:39	Database initialized
+2025-01-12T15:33:27.571Z	info	app/main.go:81	Server started	{"port": "3005"}
+2025-01-12T15:33:43.341Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-12T15:33:43.415Z	info	app/main.go:30	Migrations ran successfully
+2025-01-12T15:33:43.707Z	info	app/main.go:39	Database initialized
+2025-01-12T15:33:43.713Z	info	app/main.go:81	Server started	{"port": "3005"}
+2025-01-12T15:34:45.151Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-12T15:34:45.213Z	info	app/main.go:30	Migrations ran successfully
+2025-01-12T15:34:45.440Z	info	app/main.go:39	Database initialized
+2025-01-12T15:34:45.465Z	info	app/main.go:81	Server started	{"port": "3005"}
+2025-01-12T15:34:53.750Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-12T15:34:53.788Z	info	app/main.go:30	Migrations ran successfully
+2025-01-12T15:34:53.884Z	info	app/main.go:39	Database initialized
+2025-01-12T15:34:53.884Z	info	app/main.go:81	Server started	{"port": "3005"}
+2025-01-12T15:35:22.320Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-12T15:35:22.460Z	info	app/main.go:30	Migrations ran successfully
+2025-01-12T15:35:22.833Z	info	app/main.go:39	Database initialized
+2025-01-12T15:35:22.885Z	info	app/main.go:81	Server started	{"port": "3005"}
+2025-01-12T15:35:47.404Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-12T15:35:47.738Z	info	app/main.go:30	Migrations ran successfully
+2025-01-12T15:35:48.542Z	info	app/main.go:39	Database initialized
+2025-01-12T15:35:48.568Z	info	app/main.go:81	Server started	{"port": "3005"}
+2025-01-12T15:36:09.361Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-12T15:36:09.415Z	info	app/main.go:30	Migrations ran successfully
+2025-01-12T15:36:09.537Z	info	app/main.go:39	Database initialized
+2025-01-12T15:36:09.537Z	info	app/main.go:81	Server started	{"port": "3005"}
+2025-01-12T15:39:01.078Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-12T15:39:01.126Z	info	app/main.go:30	Migrations ran successfully
+2025-01-12T15:39:01.278Z	info	app/main.go:39	Database initialized
+2025-01-12T15:39:01.279Z	info	app/main.go:81	Server started	{"port": "3005"}
+2025-01-12T15:40:03.664Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-12T15:40:03.838Z	info	app/main.go:30	Migrations ran successfully
+2025-01-12T15:40:04.133Z	info	app/main.go:39	Database initialized
+2025-01-12T15:40:04.143Z	info	app/main.go:81	Server started	{"port": "3005"}
+2025-01-12T15:41:36.359Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-12T15:41:36.415Z	info	app/main.go:30	Migrations ran successfully
+2025-01-12T15:41:36.564Z	info	app/main.go:39	Database initialized
+2025-01-12T15:41:36.564Z	info	app/main.go:81	Server started	{"port": "3005"}
+2025-01-12T15:57:33.858Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-12T15:57:34.192Z	info	app/main.go:33	Migrations ran successfully
+2025-01-12T15:57:34.551Z	info	app/main.go:42	Database initialized
+2025-01-12T15:57:34.552Z	info	app/main.go:84	Server started	{"port": "3005"}
+2025-01-12T16:16:17.693Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-12T16:16:17.762Z	info	app/main.go:33	Migrations ran successfully
+2025-01-12T16:16:17.863Z	info	app/main.go:42	Database initialized
+2025-01-12T16:16:17.864Z	info	app/main.go:84	Server started	{"port": "3005"}
+2025-01-12T16:23:28.432Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-12T16:23:28.536Z	info	app/main.go:33	Migrations ran successfully
+2025-01-12T16:23:28.637Z	info	app/main.go:42	Database initialized
+2025-01-12T16:23:28.638Z	info	app/main.go:84	Server started	{"port": "3005"}
+2025-01-12T16:24:47.266Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-12T16:24:47.354Z	info	app/main.go:33	Migrations ran successfully
+2025-01-12T16:24:47.548Z	info	app/main.go:42	Database initialized
+2025-01-12T16:24:47.549Z	info	app/main.go:84	Server started	{"port": "3005"}
+2025-01-12T16:25:43.320Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-12T16:25:43.383Z	info	app/main.go:33	Migrations ran successfully
+2025-01-12T16:25:43.528Z	info	app/main.go:42	Database initialized
+2025-01-12T16:25:43.528Z	info	app/main.go:84	Server started	{"port": "3005"}
+2025-01-12T16:26:16.464Z	info	logger/logger.go:29	logger construction succeeded
+2025-01-12T16:26:17.186Z	info	app/main.go:33	Migrations ran successfully
+2025-01-12T16:26:17.655Z	info	app/main.go:42	Database initialized
+2025-01-12T16:26:17.658Z	info	app/main.go:84	Server started	{"port": "3005"}
