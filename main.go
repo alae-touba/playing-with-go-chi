@@ -6,6 +6,9 @@ import (
 
 	"github.com/alae-touba/playing-with-go-chi/config/database"
 	"github.com/alae-touba/playing-with-go-chi/config/logger"
+	"github.com/alae-touba/playing-with-go-chi/handlers"
+	"github.com/alae-touba/playing-with-go-chi/repositories"
+	"github.com/alae-touba/playing-with-go-chi/services"
 	_ "github.com/golang-migrate/migrate/v4/database/postgres"
 	_ "github.com/golang-migrate/migrate/v4/source/file" // <-- important
 
@@ -40,16 +43,16 @@ func main() {
 
 	r := chi.NewRouter()
 
-	// userRepository := repositories.NewUserRepository(client, logger)
-	// userService := services.NewUserService(logger, userRepository)
-	// userHandler := handlers.NewUserHandler(logger, userService)
+	userRepository := repositories.NewUserRepository(client, logger)
+	userService := services.NewUserService(logger, userRepository)
+	userHandler := handlers.NewUserHandler(logger, userService)
 
 	// Public routes (no auth required)
-	r.Get("/test", func(w http.ResponseWriter, r *http.Request) {
+	r.Get("/api/v1/hello_world", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("Hello, World!"))
 	})
 
-	// r.Post("/users", userHandler.CreateUser)
+	r.Post("/api/v1/users", userHandler.CreateUser)
 
 	// //TODO: refactor
 	// r.Get("/health", func(w http.ResponseWriter, r *http.Request) {

@@ -3,7 +3,7 @@ package services
 import (
 	"context"
 	"fmt"
-	"strconv"
+	"time"
 
 	"github.com/alae-touba/playing-with-go-chi/models"
 	"github.com/alae-touba/playing-with-go-chi/repositories"
@@ -24,93 +24,79 @@ func NewUserService(logger *zap.Logger, userRepository *repositories.UserReposit
 	}
 }
 
-func (s *UserService) GetUsers(ctx context.Context, username string) ([]models.UserResponse, error) {
-	var users []*ent.User
-	var err error
-
-	if username == "" {
-		users, err = s.userRepository.GetAll(ctx)
-	} else {
-		user, err := s.userRepository.GetByUsername(ctx, username)
-		if err == nil {
-			users = []*ent.User{user}
-		}
+func (s *UserService) CreateUser(ctx context.Context, req *models.UserRequest) (*models.UserResponse, error) {
+	hashedPassword, err := security.HashPassword(req.Password)
+	if err != nil {
+		return nil, fmt.Errorf("failed to hash password: %v", err)
 	}
 
-	if err != nil {
-		s.logger.Error("Failed to get users", zap.Error(err))
-		return nil, fmt.Errorf("Failed to get users: %v", err)
-	}
-	return convertToUserResponses(users), nil
-}
-
-func (s *UserService) CreateUser(ctx context.Context, name, password string) (*models.UserResponse, error) {
-	hashedPassword, err := security.HashPassword(password)
-	if err != nil {
-		return nil, err
+	// Create a copy of request with hashed password
+	userReq := &models.UserRequest{
+		FirstName: req.FirstName,
+		LastName:  req.LastName,
+		Email:     req.Email,
+		Password:  hashedPassword,
+		ImageName: req.ImageName,
 	}
 
-	userEnt, err := s.userRepository.Create(ctx, name, hashedPassword)
-
+	userEnt, err := s.userRepository.Create(ctx, userReq)
 	if err != nil {
-		return nil, fmt.Errorf("Failed to create user: %v", err)
+		return nil, fmt.Errorf("failed to create user: %v", err)
 	}
 
 	return convertToUserResponse(userEnt), nil
 }
 
-func (s *UserService) GetUser(ctx context.Context, id int) (*models.UserResponse, error) {
-	user, err := s.userRepository.GetByID(ctx, id)
-	if err != nil {
-		s.logger.Error("Failed to get user by id", zap.Error(err))
-		return nil, fmt.Errorf("Failed to get user by id: %v", err)
-	}
+// func (s *UserService) ValidateCredentials(username, password string) bool {
 
-	return convertToUserResponse(user), nil
-}
+// 	user, err := s.userRepository.GetByUsername(context.Background(), username)
 
-func (s *UserService) DeleteUser(ctx context.Context, id int) error {
-	err := s.userRepository.Delete(ctx, id)
-	if err != nil {
-		if ent.IsNotFound(err) {
-			return &ent.NotFoundError{}
-		}
-		s.logger.Error("Failed to delete user", zap.Error(err))
-		return fmt.Errorf("Failed to delete user: %v", err)
-	}
-	return nil
-}
+// 	if err != nil {
+// 		s.logger.Error("Failed to get user by username", zap.Error(err))
+// 		return false
+// 	}
 
-func (s *UserService) ValidateCredentials(username, password string) bool {
+// 	return security.VerifyPassword(password, user.Password)
+// }
 
-	user, err := s.userRepository.GetByUsername(context.Background(), username)
-
-	if err != nil {
-		s.logger.Error("Failed to get user by username", zap.Error(err))
-		return false
-	}
-
-	return security.VerifyPassword(password, user.Password)
-}
-
-// TODO: change file
 // Helper function to convert ent.User slice to UserResponse slice
 func convertToUserResponses(users []*ent.User) []models.UserResponse {
 	userResponses := make([]models.UserResponse, len(users))
 	for i, user := range users {
+		var deletedAt *time.Time
+		if !user.DeletedAt.IsZero() {
+			deletedAt = &user.DeletedAt
+		}
+
 		userResponses[i] = models.UserResponse{
-			ID:       strconv.Itoa(user.ID),
-			Username: user.Username,
+			ID:        user.ID.String(),
+			FirstName: user.FirstName,
+			LastName:  user.LastName,
+			Email:     user.Email,
+			ImageName: user.ImageName,
+			CreatedAt: user.CreatedAt,
+			UpdatedAt: user.UpdatedAt,
+			DeletedAt: deletedAt,
 		}
 	}
 	return userResponses
 }
 
-// TODO: change file
 // helper function to convert ent.User to UserResponse
 func convertToUserResponse(user *ent.User) *models.UserResponse {
+	var deletedAt *time.Time
+	if !user.DeletedAt.IsZero() {
+		deletedAt = &user.DeletedAt
+	}
+
 	return &models.UserResponse{
-		ID:       strconv.Itoa(user.ID),
-		Username: user.Username,
+		ID:        user.ID.String(),
+		FirstName: user.FirstName,
+		LastName:  user.LastName,
+		Email:     user.Email,
+		ImageName: user.ImageName,
+		CreatedAt: user.CreatedAt,
+		UpdatedAt: user.UpdatedAt,
+		DeletedAt: deletedAt,
 	}
 }

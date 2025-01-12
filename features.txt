@@ -5,28 +5,85 @@ Soft deletes:
     When you want to fetch records that are not deleted (i.e., the active records):
         SELECT * FROM users WHERE deleted_at IS NULL;
 
-What happens when a user is deleted?
-    User:
-        SET deleted_at to the current timestamp
-        UPDATE users SET deleted_at = CURRENT_TIMESTAMP WHERE id = [user_id];
+    What happens when a user is deleted?
+        User:
+            SET deleted_at to the current timestamp
+            UPDATE users SET deleted_at = CURRENT_TIMESTAMP WHERE id = [user_id];
 
+        Questions:
+            Keep the questions but remove the association with the deleted user
+            UPDATE questions SET user_id = NULL WHERE user_id = [user_id];
+
+        Answers:
+            Keep the answers but remove the association with the deleted user
+            UPDATE answers SET user_id = NULL WHERE user_id = [user_id];
+
+        Topics:
+            Keep the topics but remove the association with the deleted user
+            UPDATE topics SET user_id = NULL WHERE user_id = [user_id];
+            
+        User Votes:
+            Remove the user's votes
+            DELETE FROM user_votes_question WHERE user_id = [user_id];
+            DELETE FROM user_votes_answer WHERE user_id = [user_id];
+
+        User Roles:
+            Remove the user's roles
+            DELETE FROM user_roles WHERE user_id = [user_id];
+
+
+
+API design:
+    Users:
+        POST    /api/v1/users
+        GET     /api/v1/users/{id}
+        GET     /api/v1/users                               ?limit=a&offset=b&first_name=c&last_name=d
+        PUT     /api/v1/users/{id}
+        PATCH   /api/v1/users/{id}
+        DELETE  /api/v1/users/{id}                          - soft delete
+        GET     /api/v1/users/{id}/questions                ?limit=a&offset=b&topic_id=c&tag=d,e,f
+        GET     /api/v1/users/{id}/answers                  ?limit=a&offset=b&question_id=c
+        GET     /api/v1/users/{id}/topics                   ?limit=a&offset=b
+    Auth:
+        POST    /api/v1/auth/login
+        POST    /api/v1/auth/logout
+        GET     /api/v1/auth/me
     Questions:
-        Keep the questions but remove the association with the deleted user
-        UPDATE questions SET user_id = NULL WHERE user_id = [user_id];
-
+        POST    /api/v1/questions
+        GET     /api/v1/questions/{id}
+        GET     /api/v1/questions                           ?limit=a&offset=b&topic_id=c&user_id=d&tag=e,f,g
+        PUT     /api/v1/questions/{id}
+        PATCH   /api/v1/questions/{id}
+        DELETE  /api/v1/questions/{id}                      - soft delete
+        GET     /api/v1/questions/{id}/answers              ?limit=a&offset=b
+        POST    /api/v1/questions/{id}/vote                - body: vote=upvote/downvote
     Answers:
-        Keep the answers but remove the association with the deleted user
-        UPDATE answers SET user_id = NULL WHERE user_id = [user_id];
-
+        POST    /api/v1/questions/{question_id}/answers
+        GET     /api/v1/answers/{id}
+        PUT     /api/v1/answers/{id}
+        PATCH   /api/v1/answers/{id}
+        DELETE  /api/v1/answers/{id}                        - Soft delete
+        POST    /api/v1/answers/{id}/vote                   - body: vote=upvote/downvote    
     Topics:
-        Keep the topics but remove the association with the deleted user
-        UPDATE topics SET user_id = NULL WHERE user_id = [user_id];
-        
-    User Votes:
-        Remove the user's votes
-        DELETE FROM user_votes_question WHERE user_id = [user_id];
-        DELETE FROM user_votes_answer WHERE user_id = [user_id];
+        POST    /api/v1/topics
+        GET     /api/v1/topics/{id}
+        GET     /api/v1/topics                              ?limit=a&offset=b&user_id=c
+        PUT     /api/v1/topics/{id}
+        PATCH   /api/v1/topics/{id}
+        DELETE  /api/v1/topics/{id}                         - Soft delete
+        GET     /api/v1/topics/{id}/questions               ?limit=a&offset=b&user_id=c&tag=d,e,f
+    Tags:
+        POST    /api/v1/tags
+        GET     /api/v1/tags                                ?limit=a&offset=b&name=c
+        GET     /api/v1/tags/{id}
+        GET     /api/v1/tags/{id}/questions                 ?limit=a&offset=b&user_id=f&topic_id=g
 
-    User Roles:
-        Remove the user's roles
-        DELETE FROM user_roles WHERE user_id = [user_id];
+    Roles:
+        POST    /api/v1/roles
+        GET     /api/v1/roles                               ?name=a
+        GET     /api/v1/roles/{id}
+        POST    /api/v1/users/{id}/roles                    - Assign roles to user
+
+
+TODO in API design: 
+    add sort to questions and answers by created_at and vote_count
