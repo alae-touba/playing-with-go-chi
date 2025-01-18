@@ -8,12 +8,11 @@ import (
 	"github.com/alae-touba/playing-with-go-chi/config/logger"
 	"github.com/alae-touba/playing-with-go-chi/constants"
 	"github.com/alae-touba/playing-with-go-chi/handlers"
-	"github.com/alae-touba/playing-with-go-chi/middlewares"
 	"github.com/alae-touba/playing-with-go-chi/repositories"
 	"github.com/alae-touba/playing-with-go-chi/services"
 	"github.com/go-chi/chi/v5"
 	_ "github.com/golang-migrate/migrate/v4/database/postgres"
-	_ "github.com/golang-migrate/migrate/v4/source/file"
+	_ "github.com/golang-migrate/migrate/v4/source/file" // <-- important
 	_ "github.com/lib/pq"
 	"go.uber.org/zap"
 )
@@ -27,6 +26,7 @@ func main() {
 	}
 	defer logger.Sync()
 
+	// run migrations
 	if err := database.RunMigrations(); err != nil {
 		logger.Fatal("Failed to run migrations", zap.Error(err))
 	}

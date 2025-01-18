@@ -1,11 +1,12 @@
 package middlewares
 
 import (
+	"net/http"
+
 	"github.com/alae-touba/playing-with-go-chi/constants"
 	"github.com/alae-touba/playing-with-go-chi/services"
 	"github.com/alae-touba/playing-with-go-chi/utils"
 	"go.uber.org/zap"
-	"net/http"
 )
 
 type AuthMiddleware struct {
@@ -20,7 +21,7 @@ func NewAuthMiddleware(logger *zap.Logger, userService *services.UserService) *A
 	}
 }
 
-func (am *AuthMiddleware) BasicAuth(next http.Handler) http.Handler {
+func (authMiddleware *AuthMiddleware) BasicAuth(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		username, password, ok := r.BasicAuth()
 		if !ok {
@@ -30,13 +31,13 @@ func (am *AuthMiddleware) BasicAuth(next http.Handler) http.Handler {
 		}
 
 		// Verify credentials
-		if !am.userService.ValidateCredentials(username, password) {
+		if !authMiddleware.userService.ValidateCredentials(username, password) {
 			w.Header().Set(constants.HeaderWWWAuthenticate, `Basic realm="restricted"`)
 			utils.RespondWithError(w, http.StatusUnauthorized, constants.ErrUnauthorizedInvalidCredentials)
 			return
 		}
 
-		am.logger.Info("successful authentication", zap.String("username", username))
+		authMiddleware.logger.Info("successful authentication", zap.String("username", username))
 		next.ServeHTTP(w, r)
 	})
 }

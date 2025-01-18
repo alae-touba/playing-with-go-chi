@@ -27,14 +27,14 @@ func NewUserHandler(logger *zap.Logger, userService *services.UserService) *User
 	}
 }
 
-func (h *UserHandler) CreateUser(w http.ResponseWriter, r *http.Request) {
+func (userHandler *UserHandler) CreateUser(w http.ResponseWriter, r *http.Request) {
 	var req models.UserRequest
 	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
 		utils.RespondWithError(w, http.StatusBadRequest, constants.ErrInvalidRequestBody)
 		return
 	}
 
-	user, err := h.userService.CreateUser(r.Context(), &req)
+	user, err := userHandler.userService.CreateUser(r.Context(), &req)
 	if err != nil {
 		switch {
 		case errors.Is(err, errs.ErrEmailExists):
@@ -50,25 +50,25 @@ func (h *UserHandler) CreateUser(w http.ResponseWriter, r *http.Request) {
 	utils.RespondWithJSON(w, http.StatusCreated, user)
 }
 
-func (h *UserHandler) GetUser(w http.ResponseWriter, r *http.Request) {
+func (userHandler *UserHandler) GetUser(w http.ResponseWriter, r *http.Request) {
 	id := chi.URLParam(r, "id")
 
 	parsedID, err := uuid.Parse(id)
 	if err != nil {
-		h.logger.Debug("invalid uuid format",
+		userHandler.logger.Debug("invalid uuid format",
 			zap.String("id", id),
 			zap.Error(err))
 		utils.RespondWithError(w, http.StatusBadRequest, errs.ErrInvalidUUID.Error())
 		return
 	}
 
-	user, err := h.userService.GetUser(r.Context(), parsedID)
+	user, err := userHandler.userService.GetUser(r.Context(), parsedID)
 	if err != nil {
 		switch {
 		case errors.Is(err, errs.ErrUserNotFound):
 			utils.RespondWithError(w, http.StatusNotFound, errs.ErrUserNotFound.Error())
 		default:
-			h.logger.Error("failed to get user", zap.Error(err))
+			userHandler.logger.Error("failed to get user", zap.Error(err))
 			utils.RespondWithError(w, http.StatusInternalServerError, "failed to get user")
 		}
 		return

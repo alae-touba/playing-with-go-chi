@@ -9,16 +9,25 @@ import (
 	"net/http"
 )
 
-func RegisterRoutes(r *chi.Mux, logger *zap.Logger, userService *services.UserService, userHandler *handlers.UserHandler) {
+func registerV1Routes(r chi.Router, logger *zap.Logger, userService *services.UserService, userHandler *handlers.UserHandler) {
 	// public routes
-	r.Get("/api/v1/hello_world", func(w http.ResponseWriter, r *http.Request) {
+	r.Get("/hello_world", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("Hello, World!"))
 	})
-	r.Post("/api/v1/users", userHandler.CreateUser)
+	// Group related endpoints
+	r.Route("/users", func(r chi.Router) {
+		r.Post("/", userHandler.CreateUser) // POST /api/v1/users
 
-	// protected routes
-	r.Group(func(r chi.Router) {
-		r.Use(middlewares.NewAuthMiddleware(logger, userService).BasicAuth)
-		r.Get("/api/v1/users/{id}", userHandler.GetUser)
+		// Protected routes
+		r.Group(func(r chi.Router) {
+			r.Use(middlewares.NewAuthMiddleware(logger, userService).BasicAuth)
+			r.Get("/{id}", userHandler.GetUser) // GET /api/v1/users/{id}
+		})
+	})
+}
+
+func RegisterRoutes(r *chi.Mux, logger *zap.Logger, userService *services.UserService, userHandler *handlers.UserHandler) {
+	r.Route("/api/v1", func(r chi.Router) {
+		registerV1Routes(r, logger, userService, userHandler)
 	})
 }
