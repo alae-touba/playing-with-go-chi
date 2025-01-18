@@ -7,6 +7,7 @@ import (
 	"github.com/alae-touba/playing-with-go-chi/constants/errs"
 	"github.com/alae-touba/playing-with-go-chi/models"
 	"github.com/alae-touba/playing-with-go-chi/repositories/ent"
+	"github.com/alae-touba/playing-with-go-chi/repositories/ent/user"
 	"github.com/google/uuid"
 	"go.uber.org/zap"
 )
@@ -53,6 +54,18 @@ func (r *UserRepository) GetByID(ctx context.Context, id uuid.UUID) (*ent.User, 
 			return nil, errs.ErrUserNotFound
 		}
 		return nil, fmt.Errorf("getting user: %w", err)
+	}
+
+	return user, nil
+}
+
+func (r *UserRepository) GetByUsername(ctx context.Context, email string) (*ent.User, error) {
+	user, err := r.client.User.Query().Where(user.EmailEQ(email)).Only(ctx)
+	if err != nil {
+		if ent.IsNotFound(err) {
+			return nil, errs.ErrUserNotFound
+		}
+		return nil, fmt.Errorf("getting user by email: %w", err)
 	}
 
 	return user, nil

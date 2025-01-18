@@ -57,16 +57,14 @@ func (s *UserService) GetUser(ctx context.Context, id uuid.UUID) (*models.UserRe
 	return convertToUserResponse(user), nil
 }
 
-// func (s *UserService) ValidateCredentials(username, password string) bool {
-// 	user, err := s.userRepository.GetByUsername(context.Background(), username)
+func (s *UserService) ValidateCredentials(username, password string) bool {
+	user, err := s.userRepository.GetByUsername(context.Background(), username)
+	if err != nil {
+		return false
+	}
 
-// 	if err != nil {
-// 		s.logger.Error("Failed to get user by username", zap.Error(err))
-// 		return false
-// 	}
-
-// 	return security.VerifyPassword(password, user.Password)
-// }
+	return security.VerifyPassword(password, user.Password)
+}
 
 // Helper function to convert ent.User slice to UserResponse slice
 func convertToUserResponses(users []*ent.User) []models.UserResponse {
