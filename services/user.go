@@ -9,6 +9,7 @@ import (
 	"github.com/alae-touba/playing-with-go-chi/repositories"
 	"github.com/alae-touba/playing-with-go-chi/repositories/ent"
 	"github.com/alae-touba/playing-with-go-chi/security"
+	"github.com/google/uuid"
 	"go.uber.org/zap"
 )
 
@@ -41,14 +42,22 @@ func (s *UserService) CreateUser(ctx context.Context, req *models.UserRequest) (
 
 	userEnt, err := s.userRepository.Create(ctx, userReq)
 	if err != nil {
-		return nil, fmt.Errorf("failed to create user: %v", err)
+		return nil, err // Pass through the repository error
 	}
 
 	return convertToUserResponse(userEnt), nil
 }
 
-// func (s *UserService) ValidateCredentials(username, password string) bool {
+func (s *UserService) GetUser(ctx context.Context, id uuid.UUID) (*models.UserResponse, error) {
+	user, err := s.userRepository.GetByID(ctx, id)
+	if err != nil {
+		return nil, err
+	}
 
+	return convertToUserResponse(user), nil
+}
+
+// func (s *UserService) ValidateCredentials(username, password string) bool {
 // 	user, err := s.userRepository.GetByUsername(context.Background(), username)
 
 // 	if err != nil {

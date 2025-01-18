@@ -53,6 +53,7 @@ func main() {
 	})
 
 	r.Post("/api/v1/users", userHandler.CreateUser)
+	r.Get("/api/v1/users/{id}", userHandler.GetUser)
 
 	// //TODO: refactor
 	// r.Get("/health", func(w http.ResponseWriter, r *http.Request) {
