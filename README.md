@@ -1,6 +1,6 @@
 ## Playing with Go Chi
 
-This repository is a playground for experimenting with Go.
+This repository is a playground for experimenting with Go by creating an REST API for a forum website 
 
 
 ## Local Development
@@ -23,5 +23,48 @@ go generate ./repositories
 ```
 everytime, we add a new file to repositories/schema, we should run this command.
 
-## API Testing
+## API Testing (TODO:)
 API test requests are located in `test/api/api.http`. Use the VS Code REST Client extension to execute these tests.
+
+
+## Project Architecture
+
+This project follows a 3-Layer Architecture pattern with the following components:
+
+
+### 1. Handler Layer (Presentation Layer)
+- Location: `./handlers/`
+- Responsibilities:
+  - HTTP request/response handling
+  - Request parsing and validation
+  - Route management
+  - HTTP error responses
+  - HTTP-specific concerns (headers, status codes, etc.)
+- Should not contain:
+  - Business logic
+  - Data access logic
+
+### 2. Service Layer (Business Layer)
+- Location: `./services/`
+- Responsibilities:
+  - Business logic implementation
+  - Business rules validation
+  - Orchestrating multiple repositories
+  - Transaction management
+  - Integration with external services
+  - Domain error handling
+- Should not contain:
+  - HTTP-specific logic
+  - Data access logic
+
+### 3. Repository Layer (Data Access Layer)
+- Location: `./repository/`
+- Responsibilities:
+  - Database operations
+  - Data persistence logic
+  - Query building
+  - Data mapping
+  - Database error handling
+- Should not contain:
+  - Business logic
+  - HTTP-specific logic

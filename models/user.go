@@ -11,14 +11,9 @@ type UserResponse struct {
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
 
-	// time.Time has always a value and cannot be nil
-	// the value can be:
-	//   - zero value (January 1, year 1, 00:00:00 UTC)
-	//   - valid time (any other timestamp)
-	// if we do not use pointer we will always have a value wether it is zero or valid time
-	// Using *time.Time (pointer) allows for:
-	//   - nil (field will be omitted from JSON)
-	//   - valid time reference (will be included in JSON)
+	//normally zero values are omitted from JSON if we use omitempty
+	//but for some reason, time.Time zero value is showed even if we use omitempty
+	//to avoid this we use pointer (nil field will be omitted from JSON)
 	DeletedAt *time.Time `json:"deleted_at,omitempty"`
 }
 
@@ -27,5 +22,5 @@ type UserRequest struct {
 	LastName  string `json:"last_name"`
 	Email     string `json:"email"`
 	Password  string `json:"password"`
-	ImageName string `json:"image_name,omitempty"`
+	ImageName string `json:"image_name"`
 }

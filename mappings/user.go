@@ -15,7 +15,9 @@ func ToUserResponses(users []*ent.User) []models.UserResponse {
 }
 
 func ToUserResponse(user *ent.User) *models.UserResponse {
+	// nil by default
 	var deletedAt *time.Time
+
 	if !user.DeletedAt.IsZero() {
 		deletedAt = &user.DeletedAt
 	}

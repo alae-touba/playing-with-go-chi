@@ -2,8 +2,8 @@ package services
 
 import (
 	"context"
-	"fmt"
 
+	"github.com/alae-touba/playing-with-go-chi/constants/errs"
 	"github.com/alae-touba/playing-with-go-chi/mappings"
 	"github.com/alae-touba/playing-with-go-chi/models"
 	"github.com/alae-touba/playing-with-go-chi/repositories"
@@ -27,7 +27,7 @@ func NewUserService(logger *zap.Logger, userRepository *repositories.UserReposit
 func (userService *UserService) CreateUser(ctx context.Context, req *models.UserRequest) (*models.UserResponse, error) {
 	hashedPassword, err := security.HashPassword(req.Password)
 	if err != nil {
-		return nil, fmt.Errorf("failed to hash password: %v", err)
+		return nil, errs.ErrPasswordHashing
 	}
 
 	// Create a copy of request with hashed password
@@ -54,6 +54,27 @@ func (userService *UserService) GetUser(ctx context.Context, id uuid.UUID) (*mod
 	}
 
 	return mappings.ToUserResponse(user), nil
+}
+
+func (userService *UserService) UpdateUser(ctx context.Context, id uuid.UUID, req *models.UserRequest) (*models.UserResponse, error) {
+	if req.Password != "" {
+		hashedPassword, err := security.HashPassword(req.Password)
+		if err != nil {
+			return nil, errs.ErrPasswordHashing
+		}
+		req.Password = hashedPassword
+	}
+
+	user, err := userService.userRepository.UpdateUser(ctx, id, req)
+	if err != nil {
+		return nil, err
+	}
+
+	return mappings.ToUserResponse(user), nil
+}
+
+func (userService *UserService) DeleteUser(ctx context.Context, id uuid.UUID) error {
+	return userService.userRepository.Delete(ctx, id)
 }
 
 func (userService *UserService) ValidateCredentials(username, password string) bool {

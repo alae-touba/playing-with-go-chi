@@ -3,6 +3,7 @@ package repositories
 import (
 	"context"
 	"fmt"
+	"time"
 
 	"github.com/alae-touba/playing-with-go-chi/constants/errs"
 	"github.com/alae-touba/playing-with-go-chi/models"
@@ -35,20 +36,22 @@ func (userRepository *UserRepository) Create(ctx context.Context, req *models.Us
 
 	if err != nil {
 		if ent.IsConstraintError(err) {
-			userRepository.logger.Error("constraint violation while creating user",
-				zap.String("email", req.Email),
-				zap.Error(err))
 			return nil, errs.ErrEmailExists
 		}
-		userRepository.logger.Error("failed to create user", zap.Error(err))
 		return nil, fmt.Errorf("creating user: %w", err)
 	}
-
 	return user, nil
+
 }
 
 func (userRepository *UserRepository) GetByID(ctx context.Context, id uuid.UUID) (*ent.User, error) {
-	user, err := userRepository.client.User.Get(ctx, id)
+	user, err := userRepository.client.User.Query().
+		Where(
+			user.ID(id),
+			user.DeletedAtIsNil(),
+		).
+		Only(ctx)
+
 	if err != nil {
 		if ent.IsNotFound(err) {
 			return nil, errs.ErrUserNotFound
@@ -60,7 +63,12 @@ func (userRepository *UserRepository) GetByID(ctx context.Context, id uuid.UUID)
 }
 
 func (userRepository *UserRepository) GetByUsername(ctx context.Context, email string) (*ent.User, error) {
-	user, err := userRepository.client.User.Query().Where(user.EmailEQ(email)).Only(ctx)
+	user, err := userRepository.client.User.Query().
+		Where(
+			user.EmailEQ(email),
+			user.DeletedAtIsNil(),
+		).
+		Only(ctx)
 	if err != nil {
 		if ent.IsNotFound(err) {
 			return nil, errs.ErrUserNotFound
@@ -69,4 +77,54 @@ func (userRepository *UserRepository) GetByUsername(ctx context.Context, email s
 	}
 
 	return user, nil
+}
+
+func (userRepository *UserRepository) UpdateUser(ctx context.Context, id uuid.UUID, req *models.UserRequest) (*ent.User, error) {
+	update := userRepository.client.User.UpdateOneID(id)
+
+	if req.FirstName != "" {
+		update.SetFirstName(req.FirstName)
+	}
+	if req.LastName != "" {
+		update.SetLastName(req.LastName)
+	}
+	if req.Email != "" {
+		update.SetEmail(req.Email)
+	}
+	if req.Password != "" {
+		update.SetPassword(req.Password)
+	}
+	if req.ImageName != "" {
+		update.SetImageName(req.ImageName)
+	}
+
+	user, err := update.Save(ctx)
+	if err != nil {
+		if ent.IsNotFound(err) {
+			return nil, errs.ErrUserNotFound
+		}
+		if ent.IsConstraintError(err) {
+			return nil, errs.ErrEmailExists
+		}
+		return nil, fmt.Errorf("patching user: %w", err)
+	}
+
+	return user, nil
+}
+
+func (userRepository *UserRepository) Delete(ctx context.Context, id uuid.UUID) error {
+	now := time.Now()
+	_, err := userRepository.client.User.
+		UpdateOneID(id).
+		SetDeletedAt(now).
+		Save(ctx)
+
+	if err != nil {
+		if ent.IsNotFound(err) {
+			return errs.ErrUserNotFound
+		}
+		return fmt.Errorf("deleting user: %w", err)
+	}
+
+	return nil
 }

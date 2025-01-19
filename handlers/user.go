@@ -50,14 +50,44 @@ func (userHandler *UserHandler) CreateUser(w http.ResponseWriter, r *http.Reques
 	utils.RespondWithJSON(w, http.StatusCreated, user)
 }
 
+func (userHandler *UserHandler) UpdateUser(w http.ResponseWriter, r *http.Request) {
+	id := chi.URLParam(r, "id")
+	parsedID, err := uuid.Parse(id)
+	if err != nil {
+		userHandler.logger.Debug("invalid uuid format", zap.String("id", id), zap.Error(err))
+		utils.RespondWithError(w, http.StatusBadRequest, errs.ErrInvalidUUID.Error())
+		return
+	}
+
+	var req models.UserRequest
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		utils.RespondWithError(w, http.StatusBadRequest, constants.ErrInvalidRequestBody)
+		return
+	}
+
+	user, err := userHandler.userService.UpdateUser(r.Context(), parsedID, &req)
+	if err != nil {
+		switch {
+		case errors.Is(err, errs.ErrUserNotFound):
+			utils.RespondWithError(w, http.StatusNotFound, errs.ErrUserNotFound.Error())
+		case errors.Is(err, errs.ErrEmailExists):
+			utils.RespondWithError(w, http.StatusConflict, errs.ErrEmailExists.Error())
+		default:
+			userHandler.logger.Error("failed to patch user", zap.Error(err))
+			utils.RespondWithError(w, http.StatusInternalServerError, "failed to patch user")
+		}
+		return
+	}
+
+	utils.RespondWithJSON(w, http.StatusOK, user)
+}
+
 func (userHandler *UserHandler) GetUser(w http.ResponseWriter, r *http.Request) {
 	id := chi.URLParam(r, "id")
 
 	parsedID, err := uuid.Parse(id)
 	if err != nil {
-		userHandler.logger.Debug("invalid uuid format",
-			zap.String("id", id),
-			zap.Error(err))
+		userHandler.logger.Debug("invalid uuid format", zap.String("id", id), zap.Error(err))
 		utils.RespondWithError(w, http.StatusBadRequest, errs.ErrInvalidUUID.Error())
 		return
 	}
@@ -75,4 +105,28 @@ func (userHandler *UserHandler) GetUser(w http.ResponseWriter, r *http.Request) 
 	}
 
 	utils.RespondWithJSON(w, http.StatusOK, user)
+}
+
+func (userHandler *UserHandler) DeleteUser(w http.ResponseWriter, r *http.Request) {
+	id := chi.URLParam(r, "id")
+	parsedID, err := uuid.Parse(id)
+	if err != nil {
+		userHandler.logger.Debug("invalid uuid format", zap.String("id", id), zap.Error(err))
+		utils.RespondWithError(w, http.StatusBadRequest, errs.ErrInvalidUUID.Error())
+		return
+	}
+
+	err = userHandler.userService.DeleteUser(r.Context(), parsedID)
+	if err != nil {
+		switch {
+		case errors.Is(err, errs.ErrUserNotFound):
+			utils.RespondWithError(w, http.StatusNotFound, errs.ErrUserNotFound.Error())
+		default:
+			userHandler.logger.Error("failed to delete user", zap.Error(err))
+			utils.RespondWithError(w, http.StatusInternalServerError, "failed to delete user")
+		}
+		return
+	}
+
+	utils.RespondWithJSON(w, http.StatusNoContent, nil)
 }

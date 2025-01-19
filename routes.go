@@ -16,12 +16,15 @@ func registerV1Routes(r chi.Router, logger *zap.Logger, userService *services.Us
 	})
 	// Group related endpoints
 	r.Route("/users", func(r chi.Router) {
-		r.Post("/", userHandler.CreateUser) // POST /api/v1/users
+		r.Post("/", userHandler.CreateUser)
 
 		// Protected routes
 		r.Group(func(r chi.Router) {
 			r.Use(middlewares.NewAuthMiddleware(logger, userService).BasicAuth)
-			r.Get("/{id}", userHandler.GetUser) // GET /api/v1/users/{id}
+			r.Get("/{id}", userHandler.GetUser)
+			r.Patch("/{id}", userHandler.UpdateUser)
+			r.Delete("/{id}", userHandler.DeleteUser)
+
 		})
 	})
 }
