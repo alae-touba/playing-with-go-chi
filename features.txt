@@ -87,3 +87,13 @@ API design:
 
 TODO in API design: 
     add sort to questions and answers by created_at and vote_count
+
+the return of an api with a list should have this format:
+    data
+    page
+    page_size
+    total
+
+
+where Im i? 
+    i the get users => test it

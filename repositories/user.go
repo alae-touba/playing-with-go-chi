@@ -62,6 +62,36 @@ func (userRepository *UserRepository) GetByID(ctx context.Context, id uuid.UUID)
 	return user, nil
 }
 
+func (userRepository *UserRepository) GetUsers(ctx context.Context, limit, offset int, firstName, lastName string) ([]*ent.User, *int, error) {
+	query := userRepository.client.User.Query().
+		Where(user.DeletedAtIsNil())
+
+	if firstName != "" {
+		query.Where(user.FirstNameContainsFold(firstName))
+	}
+
+	if lastName != "" {
+		query.Where(user.LastNameContainsFold(lastName))
+	}
+
+	total, err := query.Count(ctx)
+	if err != nil {
+		return nil, nil, fmt.Errorf("counting users: %w", err)
+	}
+
+	users, err := query.
+		Limit(limit).
+		Offset(offset).
+		// Order(user.ByCreatedAt(sql.OrderDesc())).
+		All(ctx)
+
+	if err != nil {
+		return nil, nil, fmt.Errorf("getting users: %w", err)
+	}
+
+	return users, &total, nil
+}
+
 func (userRepository *UserRepository) GetByUsername(ctx context.Context, email string) (*ent.User, error) {
 	user, err := userRepository.client.User.Query().
 		Where(

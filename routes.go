@@ -21,10 +21,10 @@ func registerV1Routes(r chi.Router, logger *zap.Logger, userService *services.Us
 		// Protected routes
 		r.Group(func(r chi.Router) {
 			r.Use(middlewares.NewAuthMiddleware(logger, userService).BasicAuth)
+			r.Get("/", userHandler.GetUsers)
 			r.Get("/{id}", userHandler.GetUser)
 			r.Patch("/{id}", userHandler.UpdateUser)
 			r.Delete("/{id}", userHandler.DeleteUser)
-
 		})
 	})
 }

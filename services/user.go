@@ -56,6 +56,15 @@ func (userService *UserService) GetUser(ctx context.Context, id uuid.UUID) (*mod
 	return mappings.ToUserResponse(user), nil
 }
 
+func (userService *UserService) GetUsers(ctx context.Context, limit, offset int, firstName, lastName string) ([]models.UserResponse, *int, error) {
+	users, total, err := userService.userRepository.GetUsers(ctx, limit, offset, firstName, lastName)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return mappings.ToUserResponses(users), total, nil
+}
+
 func (userService *UserService) UpdateUser(ctx context.Context, id uuid.UUID, req *models.UserRequest) (*models.UserResponse, error) {
 	if req.Password != "" {
 		hashedPassword, err := security.HashPassword(req.Password)
