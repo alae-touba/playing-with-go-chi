@@ -3,7 +3,6 @@ package repositories
 import (
 	"context"
 	"fmt"
-	"time"
 
 	"github.com/alae-touba/playing-with-go-chi/constants/errs"
 	"github.com/alae-touba/playing-with-go-chi/models"
@@ -37,6 +36,8 @@ func (userRepository *UserRepository) Create(ctx context.Context, req *models.Us
 	if err != nil {
 		if ent.IsConstraintError(err) {
 			return nil, errs.ErrEmailExists
+		} else if ent.IsValidationError(err) {
+				return nil, errs.ErrValidationFailed
 		}
 		return nil, fmt.Errorf("creating user: %w", err)
 	}
@@ -45,13 +46,7 @@ func (userRepository *UserRepository) Create(ctx context.Context, req *models.Us
 }
 
 func (userRepository *UserRepository) GetByID(ctx context.Context, id uuid.UUID) (*ent.User, error) {
-	user, err := userRepository.client.User.Query().
-		Where(
-			user.ID(id),
-			user.DeletedAtIsNil(),
-		).
-		Only(ctx)
-
+	user, err := userRepository.client.User.Get(ctx, id)
 	if err != nil {
 		if ent.IsNotFound(err) {
 			return nil, errs.ErrUserNotFound
@@ -63,8 +58,8 @@ func (userRepository *UserRepository) GetByID(ctx context.Context, id uuid.UUID)
 }
 
 func (userRepository *UserRepository) GetUsers(ctx context.Context, limit, offset int, firstName, lastName string) ([]*ent.User, *int, error) {
-	query := userRepository.client.User.Query().
-		Where(user.DeletedAtIsNil())
+	query := userRepository.client.User.Query()
+		// Where(user.DeletedAtIsNil())
 
 	if firstName != "" {
 		query.Where(user.FirstNameContainsFold(firstName))
@@ -96,7 +91,7 @@ func (userRepository *UserRepository) GetByUsername(ctx context.Context, email s
 	user, err := userRepository.client.User.Query().
 		Where(
 			user.EmailEQ(email),
-			user.DeletedAtIsNil(),
+			// user.DeletedAtIsNil(),
 		).
 		Only(ctx)
 	if err != nil {
@@ -109,7 +104,7 @@ func (userRepository *UserRepository) GetByUsername(ctx context.Context, email s
 	return user, nil
 }
 
-func (userRepository *UserRepository) UpdateUser(ctx context.Context, id uuid.UUID, req *models.UserRequest) (*ent.User, error) {
+func (userRepository *UserRepository) UpdateUser(ctx context.Context, id uuid.UUID, req *models.UserUpdateRequest) (*ent.User, error) {
 	update := userRepository.client.User.UpdateOneID(id)
 
 	if req.FirstName != "" {
@@ -143,11 +138,11 @@ func (userRepository *UserRepository) UpdateUser(ctx context.Context, id uuid.UU
 }
 
 func (userRepository *UserRepository) Delete(ctx context.Context, id uuid.UUID) error {
-	now := time.Now()
-	_, err := userRepository.client.User.
-		UpdateOneID(id).
-		SetDeletedAt(now).
-		Save(ctx)
+	// now := time.Now()
+	err := userRepository.client.User.DeleteOneID(id).Exec(ctx)
+		// UpdateOneID(id).
+		// SetDeletedAt(now).
+		// Save(ctx)
 
 	if err != nil {
 		if ent.IsNotFound(err) {

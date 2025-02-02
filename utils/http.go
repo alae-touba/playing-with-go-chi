@@ -3,6 +3,7 @@ package utils
 import (
 	"encoding/json"
 	"net/http"
+	"reflect"
 
 	"github.com/alae-touba/playing-with-go-chi/constants"
 )
@@ -10,6 +11,7 @@ import (
 // Handle http responses
 type ListResponse struct {
 	Data    interface{} `json:"data"`
+	Count   int         `json:"count"`
 	Page    int         `json:"page"`
 	PerPage int         `json:"per_page"`
 	Total   int         `json:"total"`
@@ -26,8 +28,14 @@ func RespondWithError(w http.ResponseWriter, code int, message string) {
 }
 
 func RespondWithList(w http.ResponseWriter, code int, data interface{}, page, perPage, total int) {
+	count := 0
+	if reflect.TypeOf(data).Kind() == reflect.Slice {
+		count = reflect.ValueOf(data).Len()
+	}
+
 	listResponse := ListResponse{
 		Data:    data,
+		Count:   count,
 		Page:    page,
 		PerPage: perPage,
 		Total:   total,

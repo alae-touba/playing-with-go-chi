@@ -43,10 +43,18 @@ func main() {
 
 	// handle routes
 	r := chi.NewRouter()
+	//user routes
 	userRepository := repositories.NewUserRepository(client, logger)
 	userService := services.NewUserService(logger, userRepository)
 	userHandler := handlers.NewUserHandler(logger, userService)
-	RegisterRoutes(r, logger, userService, userHandler)
+	
+	//topic routes
+	topicRepository := repositories.NewTopicRepository(client, logger)
+	topicService := services.NewTopicService(logger, topicRepository)
+	topicHandler := handlers.NewTopicHandler(logger, topicService)
+
+
+	RegisterRoutes(r, logger, userService, userHandler, topicHandler)
 
 	// Start server
 	logger.Info("Server started", zap.String("port", constants.DefaultPort))

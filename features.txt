@@ -1,35 +1,49 @@
-Soft deletes:
+TODO:
+soft delete:
+    should i consider soft delete in the future?
+    maybe just for users. 
+    we will soft delet the users by setting deleted_at to the current time
+    if a user is soft deleted, its topics and questions and answers should remain in the database
+    there will be no soft delete for topics, questions and answers
+    if a topic is deleted, all its questions and answers should be deleted
+    if a question is deleted, all its answers should be deleted
+    if an answer is deleted, it should be deleted
 
-    When a record is first created, deleted_at is set to NULL, indicating that it has not been deleted.
 
-    When you want to fetch records that are not deleted (i.e., the active records):
-        SELECT * FROM users WHERE deleted_at IS NULL;
+code i may need:
+    create a vote on a question:
+        vote, err := client.UserVoteQuestion.
+            Create().
+            SetUserID(user.ID).
+            SetQuestionID(question.ID).
+            SetVoteType("upvote").
+            Save(ctx)
+    create a vote on an answer:
+        vote, err := client.UserVoteAnswer.
+            Create().
+            SetUserID(user.ID).
+            SetAnswerID(answer.ID).
+            SetVoteType("downvote").
+            Save(ctx)
 
-    What happens when a user is deleted?
-        User:
-            SET deleted_at to the current timestamp
-            UPDATE users SET deleted_at = CURRENT_TIMESTAMP WHERE id = [user_id];
+    total votes for a question:
+        upvotes, err := client.UserVoteQuestion.
+            Query().
+            Where(
+                uservotequestion.QuestionID(question.ID),
+                uservotequestion.VoteType("upvote"),
+            ).
+            Count(ctx)
 
-        Questions:
-            Keep the questions but remove the association with the deleted user
-            UPDATE questions SET user_id = NULL WHERE user_id = [user_id];
+        downvotes, err := client.UserVoteQuestion.
+            Query().
+            Where(
+                uservotequestion.QuestionID(question.ID),
+                uservotequestion.VoteType("downvote"),
+            ).
+            Count(ctx)
 
-        Answers:
-            Keep the answers but remove the association with the deleted user
-            UPDATE answers SET user_id = NULL WHERE user_id = [user_id];
 
-        Topics:
-            Keep the topics but remove the association with the deleted user
-            UPDATE topics SET user_id = NULL WHERE user_id = [user_id];
-            
-        User Votes:
-            Remove the user's votes
-            DELETE FROM user_votes_question WHERE user_id = [user_id];
-            DELETE FROM user_votes_answer WHERE user_id = [user_id];
-
-        User Roles:
-            Remove the user's roles
-            DELETE FROM user_roles WHERE user_id = [user_id];
 
 
 
@@ -67,7 +81,7 @@ API design:
     Topics:
         POST    /api/v1/topics
         GET     /api/v1/topics/{id}
-        GET     /api/v1/topics                              ?limit=a&offset=b&user_id=c
+        GET     /api/v1/topics                              ?limit=a&offset=b&user_id=c&name=d
         PUT     /api/v1/topics/{id}
         PATCH   /api/v1/topics/{id}
         DELETE  /api/v1/topics/{id}                         - Soft delete
@@ -85,15 +99,65 @@ API design:
         POST    /api/v1/users/{id}/roles                    - Assign roles to user
 
 
-TODO in API design: 
+TODO: in API design: 
     add sort to questions and answers by created_at and vote_count
+
+
+TODO:
+    create the swagger in editor.swagger.io
+
 
 the return of an api with a list should have this format:
     data
     page
     page_size
     total
+    count
+
+TODO:
+    should create a script that empty all the tables in the database => script1
+        a bunch of delete statements
+    and another script that fills the database with some data for testing => script2
+        an hurl test file
+    each time i wanna test the api, i should run script1 then script2
 
 
+TODO:
+    a global function that pareses UUIDs from the request and returns the UUIDs
+
+TODO: 
+    add a validation library to validate user inputs.
+    the validations that you have in the models package (email, required, etc) for UserRequest are not doing anything now.
+    for now, they are just placeholders.
+    You need to integrate a validation library like go-playground/validator to enforce the rules defined in your struct tags.
+    
+        
+    go get github.com/go-playground/validator/v10
+
+    code exmaple:
+
+        func (userHandler *UserHandler) CreateUser(w http.ResponseWriter, r *http.Request) {
+            var req models.UserRequest
+            if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+                utils.RespondWithError(w, http.StatusBadRequest, constants.ErrInvalidRequestBody)
+                return
+            }
+
+            // 🔥 Add validation here
+            validate := validator.New()
+            if err := validate.Struct(req); err != nil {
+                validationErrors := err.(validator.ValidationErrors)
+                utils.RespondWithValidationError(w, validationErrors) // Create a helper for this
+                return
+            }
+
+            // Rest of your code...
+        }
+
+TODO: 
+    the delete of topic should take care of deleting all its questions and answers
+
+TODO: 
+    hurl file must read from a properties file, like for example the url for topics http://localhost:3005/api/v1/topics, this is repeated a lot
 where Im i? 
     i the get users => test it

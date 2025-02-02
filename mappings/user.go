@@ -3,7 +3,6 @@ package mappings
 import (
 	"github.com/alae-touba/playing-with-go-chi/models"
 	"github.com/alae-touba/playing-with-go-chi/repositories/ent"
-	"time"
 )
 
 func ToUserResponses(users []*ent.User) []models.UserResponse {
@@ -16,11 +15,11 @@ func ToUserResponses(users []*ent.User) []models.UserResponse {
 
 func ToUserResponse(user *ent.User) *models.UserResponse {
 	// nil by default
-	var deletedAt *time.Time
+	// var deletedAt *time.Time
 
-	if !user.DeletedAt.IsZero() {
-		deletedAt = &user.DeletedAt
-	}
+	// if !user.DeletedAt.IsZero() {
+	// 	deletedAt = &user.DeletedAt
+	// }
 
 	return &models.UserResponse{
 		ID:        user.ID.String(),
@@ -30,6 +29,6 @@ func ToUserResponse(user *ent.User) *models.UserResponse {
 		ImageName: user.ImageName,
 		CreatedAt: user.CreatedAt,
 		UpdatedAt: user.UpdatedAt,
-		DeletedAt: deletedAt,
+		// DeletedAt: deletedAt,
 	}
 }

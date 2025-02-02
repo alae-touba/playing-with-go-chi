@@ -29,11 +29,13 @@ func (AnswerVote) Fields() []ent.Field {
 // Edges of the AnswerVote.
 func (AnswerVote) Edges() []ent.Edge {
 	return []ent.Edge{
-		edge.To("user", User.Type).
+		edge.From("user", User.Type).
+			Ref("answer_votes").
 			Required().
 			Unique().
 			Field("user_id"),
-		edge.To("answer", Answer.Type).
+		edge.From("answer", Answer.Type).
+			Ref("votes").
 			Required().
 			Unique().
 			Field("answer_id"),

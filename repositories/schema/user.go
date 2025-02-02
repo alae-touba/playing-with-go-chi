@@ -25,7 +25,7 @@ func (User) Fields() []ent.Field {
 		field.String("image_name").Optional(),
 		field.Time("created_at").Default(time.Now).Immutable(),
 		field.Time("updated_at").Default(time.Now).UpdateDefault(time.Now),
-		field.Time("deleted_at").Optional(),
+		// field.Time("deleted_at").Optional(),
 	}
 }
 
@@ -38,5 +38,6 @@ func (User) Edges() []ent.Edge {
 		edge.To("roles", Role.Type).Through("user_roles", UserRole.Type),
 		edge.To("question_votes", QuestionVote.Type),
 		edge.To("answer_votes", AnswerVote.Type),
+		
 	}
 }

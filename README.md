@@ -1,11 +1,11 @@
 ## Playing with Go Chi
 
-This repository is a playground for experimenting with Go by creating an REST API for a forum website 
+This repository is a playground for me to experiment with Go by creating an REST API for a forum website 
 
 
 ## Local Development
 
-You must have go, docker and make installed.
+You must have `go`, `docker` and `make` installed.
 
 To run the application:
 
@@ -21,7 +21,7 @@ Before running the app for the first time, we need to:
 ```bash
 go generate ./repositories
 ```
-everytime, we add a new file to repositories/schema, we should run this command.
+everytime we add/delete/update a file inside repositories/schema, we should run this command.
 
 ## API Testing (TODO:)
 API test requests are located in `test/api/api.http`. Use the VS Code REST Client extension to execute these tests.
@@ -36,7 +36,7 @@ This project follows a 3-Layer Architecture pattern with the following component
 - Location: `./handlers/`
 - Responsibilities:
   - HTTP request/response handling
-  - Request parsing and validation
+  - Request/input parsing and validation
   - Route management
   - HTTP error responses
   - HTTP-specific concerns (headers, status codes, etc.)

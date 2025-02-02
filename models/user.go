@@ -10,17 +10,22 @@ type UserResponse struct {
 	ImageName string    `json:"image_name,omitempty"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
-
-	//normally zero values are omitted from JSON if we use omitempty
-	//but for some reason, time.Time zero value is showed even if we use omitempty
-	//to avoid this we use pointer (nil field will be omitted from JSON)
-	DeletedAt *time.Time `json:"deleted_at,omitempty"`
 }
 
+// for creating a user
 type UserRequest struct {
-	FirstName string `json:"first_name"`
-	LastName  string `json:"last_name"`
-	Email     string `json:"email"`
-	Password  string `json:"password"`
+	FirstName string `json:"first_name" validate:"required"`
+	LastName  string `json:"last_name" validate:"required"`
+	Email     string `json:"email" validate:"required,email"`
+	Password  string `json:"password" validate:"required"`
 	ImageName string `json:"image_name"`
+}
+
+// for updating a user
+type UserUpdateRequest struct {
+    FirstName string `json:"first_name"`
+    LastName  string `json:"last_name"`
+    Email     string `json:"email" validate:"email"`
+    Password  string `json:"password"`
+    ImageName string `json:"image_name"`
 }

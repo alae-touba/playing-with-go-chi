@@ -20,15 +20,18 @@ func (Answer) Fields() []ent.Field {
 		field.UUID("id", uuid.UUID{}).Default(uuid.New),
 		field.Text("content").NotEmpty(),
 		field.Time("created_at").Default(time.Now).Immutable(),
-		field.Time("deleted_at").Optional(),
+		// field.Time("deleted_at").Optional(),
+		field.UUID("user_id", uuid.UUID{}),
+        field.UUID("question_id", uuid.UUID{}),
 	}
 }
 
 // Edges of the Answer.
 func (Answer) Edges() []ent.Edge {
 	return []ent.Edge{
-		edge.From("user", User.Type).Ref("answers").Unique().Required(),
-		edge.From("question", Question.Type).Ref("answers").Unique().Required(),
+		edge.From("user", User.Type).Ref("answers").Unique().Required().Field("user_id"),
+		edge.From("question", Question.Type).Ref("answers").Unique().Required().Field("question_id"),
+		
 		edge.To("votes", AnswerVote.Type),
 	}
 }

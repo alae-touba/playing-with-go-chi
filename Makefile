@@ -17,3 +17,6 @@ reset: down
 # generate ent files
 ent:
 	go generate ./repositories
+
+hurl:
+	hurl api-tests.hurl

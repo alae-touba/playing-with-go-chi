@@ -11,7 +11,6 @@ import (
 	"github.com/alae-touba/playing-with-go-chi/services"
 	"github.com/alae-touba/playing-with-go-chi/utils"
 	"github.com/go-chi/chi/v5"
-	"github.com/google/uuid"
 	"go.uber.org/zap"
 )
 
@@ -45,7 +44,7 @@ func (userHandler *UserHandler) GetUsers(w http.ResponseWriter, r *http.Request)
 func (userHandler *UserHandler) GetUser(w http.ResponseWriter, r *http.Request) {
 	id := chi.URLParam(r, "id")
 
-	parsedID, err := uuid.Parse(id)
+	parsedID, err := utils.ParseUUID(id)
 	if err != nil {
 		userHandler.logger.Debug("invalid uuid format", zap.String("id", id), zap.Error(err))
 		utils.RespondWithError(w, http.StatusBadRequest, errs.ErrInvalidUUID.Error())
@@ -76,11 +75,13 @@ func (userHandler *UserHandler) CreateUser(w http.ResponseWriter, r *http.Reques
 
 	user, err := userHandler.userService.CreateUser(r.Context(), &req)
 	if err != nil {
+		userHandler.logger.Error("failed to create user", zap.Error(err))
+
 		switch {
 		case errors.Is(err, errs.ErrEmailExists):
 			utils.RespondWithError(w, http.StatusConflict, errs.ErrEmailExists.Error())
-		// case erro♂rs.Is(err, errors.ErrInvalidUser):
-		//     utils.RespondWithError(w, http.StatusBadRequest, "Invalid user data")
+		case errors.Is(err, errs.ErrValidationFailed):
+			utils.RespondWithError(w, http.StatusBadRequest, errs.ErrValidationFailed.Error())
 		default:
 			utils.RespondWithError(w, http.StatusInternalServerError, "failed to create user")
 		}
@@ -92,14 +93,14 @@ func (userHandler *UserHandler) CreateUser(w http.ResponseWriter, r *http.Reques
 
 func (userHandler *UserHandler) UpdateUser(w http.ResponseWriter, r *http.Request) {
 	id := chi.URLParam(r, "id")
-	parsedID, err := uuid.Parse(id)
+	parsedID, err := utils.ParseUUID(id)
 	if err != nil {
 		userHandler.logger.Debug("invalid uuid format", zap.String("id", id), zap.Error(err))
 		utils.RespondWithError(w, http.StatusBadRequest, errs.ErrInvalidUUID.Error())
 		return
 	}
 
-	var req models.UserRequest
+	var req models.UserUpdateRequest
 	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
 		utils.RespondWithError(w, http.StatusBadRequest, constants.ErrInvalidRequestBody)
 		return
@@ -124,7 +125,7 @@ func (userHandler *UserHandler) UpdateUser(w http.ResponseWriter, r *http.Reques
 
 func (userHandler *UserHandler) DeleteUser(w http.ResponseWriter, r *http.Request) {
 	id := chi.URLParam(r, "id")
-	parsedID, err := uuid.Parse(id)
+	parsedID, err := utils.ParseUUID(id)
 	if err != nil {
 		userHandler.logger.Debug("invalid uuid format", zap.String("id", id), zap.Error(err))
 		utils.RespondWithError(w, http.StatusBadRequest, errs.ErrInvalidUUID.Error())

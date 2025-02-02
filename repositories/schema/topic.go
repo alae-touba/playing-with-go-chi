@@ -23,14 +23,15 @@ func (Topic) Fields() []ent.Field {
 		field.String("image_name").Optional(),
 		field.Time("created_at").Default(time.Now).Immutable(),
 		field.Time("updated_at").Default(time.Now).UpdateDefault(time.Now),
-		field.Time("deleted_at").Optional(),
+		// field.Time("deleted_at").Optional(),
+		field.UUID("user_id", uuid.UUID{}),
 	}
 }
 
 // Edges of the Topic.
 func (Topic) Edges() []ent.Edge {
 	return []ent.Edge{
-		edge.From("user", User.Type).Ref("topics").Unique().Required(),
+		edge.From("user", User.Type).Ref("topics").Unique().Required().Field("user_id"),
 		edge.To("questions", Question.Type),
 	}
 }

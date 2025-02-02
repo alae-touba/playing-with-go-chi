@@ -48,24 +48,24 @@ func (userService *UserService) CreateUser(ctx context.Context, req *models.User
 }
 
 func (userService *UserService) GetUser(ctx context.Context, id uuid.UUID) (*models.UserResponse, error) {
-	user, err := userService.userRepository.GetByID(ctx, id)
+	userEnt, err := userService.userRepository.GetByID(ctx, id)
 	if err != nil {
 		return nil, err
 	}
 
-	return mappings.ToUserResponse(user), nil
+	return mappings.ToUserResponse(userEnt), nil
 }
 
 func (userService *UserService) GetUsers(ctx context.Context, limit, offset int, firstName, lastName string) ([]models.UserResponse, *int, error) {
-	users, total, err := userService.userRepository.GetUsers(ctx, limit, offset, firstName, lastName)
+	usersEnt, total, err := userService.userRepository.GetUsers(ctx, limit, offset, firstName, lastName)
 	if err != nil {
 		return nil, nil, err
 	}
 
-	return mappings.ToUserResponses(users), total, nil
+	return mappings.ToUserResponses(usersEnt), total, nil
 }
 
-func (userService *UserService) UpdateUser(ctx context.Context, id uuid.UUID, req *models.UserRequest) (*models.UserResponse, error) {
+func (userService *UserService) UpdateUser(ctx context.Context, id uuid.UUID, req *models.UserUpdateRequest) (*models.UserResponse, error) {
 	if req.Password != "" {
 		hashedPassword, err := security.HashPassword(req.Password)
 		if err != nil {
@@ -74,12 +74,12 @@ func (userService *UserService) UpdateUser(ctx context.Context, id uuid.UUID, re
 		req.Password = hashedPassword
 	}
 
-	user, err := userService.userRepository.UpdateUser(ctx, id, req)
+	userEnt, err := userService.userRepository.UpdateUser(ctx, id, req)
 	if err != nil {
 		return nil, err
 	}
 
-	return mappings.ToUserResponse(user), nil
+	return mappings.ToUserResponse(userEnt), nil
 }
 
 func (userService *UserService) DeleteUser(ctx context.Context, id uuid.UUID) error {
@@ -87,10 +87,10 @@ func (userService *UserService) DeleteUser(ctx context.Context, id uuid.UUID) er
 }
 
 func (userService *UserService) ValidateCredentials(username, password string) bool {
-	user, err := userService.userRepository.GetByUsername(context.Background(), username)
+	userEnt, err := userService.userRepository.GetByUsername(context.Background(), username)
 	if err != nil {
 		return false
 	}
 
-	return security.VerifyPassword(password, user.Password)
+	return security.VerifyPassword(password, userEnt.Password)
 }
